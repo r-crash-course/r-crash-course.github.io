@@ -121,7 +121,7 @@ Until now, we've been using the nicely formatted original gapminder dataset, but
 'real' data (i.e. our own research data) will never be so well organized. Here
 let's start with the wide format version of the gapminder dataset.
 
-> Download the wide version of the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv) 
+> Download the wide version of the gapminder data from [here](https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv)
 and save it in your data folder.
 
 We'll load the data file and look at it.  Note: we don't want our continent and
@@ -186,6 +186,8 @@ The first step towards getting our nice intermediate data format is to first
 convert from the wide to the long format. The `tidyr` function `gather()` will
 'gather' your observation variables into a single variable.
 
+![](../fig/14-tidyr-fig3.png)
+
 
 ~~~
 gap_long <- gap_wide %>%
@@ -219,7 +221,7 @@ that starts with the desired character string. Gather also allows the alternativ
 syntax of using the `-` symbol to identify which variables are not to be
 gathered (i.e. ID variables)
 
-![](../fig/14-tidyr-fig3.png)
+![](../fig/14-tidyr-fig4.png)
 
 
 ~~~
