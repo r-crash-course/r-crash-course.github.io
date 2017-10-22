@@ -26,8 +26,6 @@ SOURCE_DIRS = ['', '_episodes', '_extras']
 # Episodes are handled specially, and extra files in '_extras' are also handled specially.
 # This list must include all the Markdown files listed in the 'bin/initialize' script.
 REQUIRED_FILES = {
-    '%/CONDUCT.md': True,
-    '%/CONTRIBUTING.md': False,
     '%/LICENSE.md': True,
     '%/README.md': False,
     '%/_extras/discuss.md': True,
