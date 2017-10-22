@@ -3,7 +3,6 @@
 [concept-maps]: http://swcarpentry.github.io/instructor-training/08-memory/
 [contact]: mailto:lessons@software-carpentry.org
 [contrib-covenant]: http://contributor-covenant.org/
-[contributing]: {{ site.github.repository_url }}/blob/gh-pages/CONTRIBUTING.md
 [cran-checkpoint]: https://cran.r-project.org/web/packages/checkpoint/index.html
 [cran-knitr]: https://cran.r-project.org/web/packages/knitr/index.html
 [cran-stringr]: https://cran.r-project.org/web/packages/stringr/index.html

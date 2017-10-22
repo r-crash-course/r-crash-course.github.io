@@ -7,7 +7,7 @@ permalink: /license/
 
 All of this course material was derived from
 Copyright © [Software Carpentry and Data Carpentry][sc] instructional material 
-[R for Reproducible Scientific Analysis][sc-course]
+[R Crash Course][sc-course]
 made available under the [Creative Commons Attribution
 license][cc-by-human]. The following is a human-readable summary of
 (and not a substitute for) the [full legal text of the CC BY 4.0

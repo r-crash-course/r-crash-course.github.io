@@ -5,7 +5,7 @@ An introduction to R for non-programmers using the [Gapminder][gapminder] data. 
 Software Carpentry course "R for Reproducible Science". 
 
 To run:
-Install all packages required in lessons. Install ruby and gem, jekyll. Run `make serve`.
+Install all packages required in lessons. Install ruby and gem, jekyll. Run `make site` to build and `make serve` to build and watch.
 
 Maintainers:
 
