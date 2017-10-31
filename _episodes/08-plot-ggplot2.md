@@ -89,7 +89,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .r}
 
-<img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter2" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" style="display: block; margin: auto;" />
+<img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatterN-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatterN" alt="plot of chunk lifeExp-vs-gdpPercap-scatterN" style="display: block; margin: auto;" />
 
 > ## Challenge 1
 >

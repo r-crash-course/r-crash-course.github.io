@@ -197,7 +197,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > -rw-r--r--  1 naupaka  staff    80K Jul 19  2016 data/gapminder-FiveYearData.csv
+> > -rw-rw-r-- 1 ai ai 80K Oct 24 11:38 data/gapminder-FiveYearData.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.
@@ -211,7 +211,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> >     1705 data/gapminder-FiveYearData.csv
+> > 1705 data/gapminder-FiveYearData.csv
 > > ~~~
 > > {: .output}
 > > There are 1705 lines. The data looks like:
