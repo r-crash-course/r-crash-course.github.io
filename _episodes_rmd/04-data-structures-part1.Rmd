@@ -401,7 +401,7 @@ Now R has noticed that there are three possible categories in our data - but it
 also did something surprising; instead of printing out the strings we gave it,
 we got a bunch of numbers instead. R has replaced our human-readable categories
 with numbered indices under the hood, this is necessary as many statistical
-calculations utilise such numerical representations for categorical data:
+calculations utilize such numerical representations for categorical data:
 
 ```{r}
 typeof(coats)
@@ -606,7 +606,7 @@ ncol(matrix_example)
 > Make another matrix, this time containing the numbers 1:50,
 > with 5 columns and 10 rows.
 > Did the `matrix` function fill your matrix by column, or by
-> row, as its default behaviour?
+> row, as its default behavior?
 > See if you can figure out how to change this.
 > (hint: read the documentation for `matrix`!)
 >
@@ -615,7 +615,7 @@ ncol(matrix_example)
 > > Make another matrix, this time containing the numbers 1:50,
 > > with 5 columns and 10 rows.
 > > Did the `matrix` function fill your matrix by column, or by
-> > row, as its default behaviour?
+> > row, as its default behavior?
 > > See if you can figure out how to change this.
 > > (hint: read the documentation for `matrix`!)
 > >

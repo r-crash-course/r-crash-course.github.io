@@ -46,6 +46,7 @@ for all of these countries in under a minute!
 Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.
 
 [Download and install the latest version of R here](https://www.r-project.org/)
+
 [Download and install RStudio here](https://www.rstudio.com/)
 
 ## Introduction to RStudio
@@ -102,7 +103,7 @@ interactive R console.
 > or Linux or Command-Enter on OS X. (This shortcut can also be seen by hovering
 > the mouse over the button). To run a block of code, select it and then `Run`.
 > If you have modified a line of code within a block of code you have just run,
-> there is no need to reselct the section and `Run`, you can use the next button
+> there is no need to re-select the section and `Run`, you can use the next button
 > along, `Re-run the previous region`. This will run the previous code block
 > including the modifications you have made.
 {: .callout}
@@ -116,11 +117,9 @@ file. This console in RStudio is the same as the one you would get if
 you typed in `R` in your command-line environment.
 
 The first thing you will see in the R interactive session is a bunch
-of information, followed by a ">" and a blinking cursor. In many ways
-this is similar to the shell environment you learned about during the
-shell lessons: it operates on the same idea of a "Read, evaluate,
-print loop": you type in commands, R tries to execute them, and then
-returns a result.
+of information, followed by a ">" and a blinking cursor. It operates 
+on the idea of a "Read, evaluate, print loop": you type in commands, 
+R tries to execute them, and then returns a result.
 
 ## Using R as a calculator
 
@@ -162,11 +161,11 @@ prompt.
 
 > ## Tip: Cancelling commands
 >
-> If you're using R from the commandline instead of from within RStudio,
+> If you're using R from the command-line instead of from within RStudio,
 > you need to use `Ctrl+C` instead of `Esc` to cancel the command. This
 > applies to Mac users as well!
 >
-> Cancelling a command isn't only useful for killing incomplete commands:
+> Canceling a command isn't only useful for killing incomplete commands:
 > you can also use it to tell R to stop running code (for example if it's
 > taking much longer than you expect), or to get rid of the code you're
 > currently writing.
@@ -654,7 +653,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x240ef70>
+<bytecode: 0x32a8f70>
 <environment: namespace:base>
 ~~~
 {: .output}

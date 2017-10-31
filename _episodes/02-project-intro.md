@@ -64,7 +64,7 @@ project.
 > 2. Click "New Directory".
 > 3. Click "Empty Project".
 > 4. Type in the name of the directory to store your project, e.g. "my_project".
-> 5. If available, select the checkbox for "Create a git repository."
+> 5. If available, select the check-box for "Create a git repository."
 > 6. Click the "Create Project" button.
 {: .challenge}
 
@@ -86,7 +86,7 @@ It is therefore a good idea to treat your data as "read-only".
 
 ### Data Cleaning
 
-In many cases your data will be "dirty": it will need significant preprocessing
+In many cases your data will be "dirty": it will need significant pre-processing
 to get into a format R (or any other programming language) will find useful. This
 task is sometimes called "data munging". I find it useful to store these scripts
 in a separate folder, and create a second "read-only" data folder to hold the
@@ -119,13 +119,13 @@ get shared between projects.
 >
 > One way to automate the management of projects is to install the third-party package, `ProjectTemplate`.
 > This package will set up an ideal directory structure for project management.
-> This is very useful as it enables you to have your analysis pipeline/workflow organised and structured.
+> This is very useful as it enables you to have your analysis pipeline/workflow organized and structured.
 > Together with the default RStudio project functionality and Git you will be able to keep track of your
 > work as well as be able to share your work with collaborators.
 >
 > 1. Install `ProjectTemplate`.
 > 2. Load the library
-> 3. Initialise the project:
+> 3. Initialize the project:
 >
 > 
 > ~~~
@@ -166,7 +166,7 @@ one to store the analysis scripts.
 Now we have a good directory structure we will now place/save the data file in the `data/` directory.
 
 > ## Challenge 1
-> Download the gapminder data from [here](https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv).
+> Download the gapminder data from [here](https://raw.githubusercontent.com/jokinghero/jokinghero.github.io/master/_episodes_rmd/data/gapminder-FiveYearData.csv).
 >
 > 1. Download the file (CTRL + S, right mouse click -> "Save as", or File -> "Save page as")
 > 2. Make sure it's saved under the name `gapminder-FiveYearData.csv`

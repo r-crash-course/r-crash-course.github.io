@@ -6,7 +6,7 @@ root: .
 Introduction to R for non-programmers using gapminder data.
 
 The goal of this lesson is to teach novice programmers to write modular code
-and best practices for using R for data analysis. R is commonly used in many
+and introduce to you best practices for using R for data analysis. R is commonly used in many
 scientific disciplines for statistical analysis and its array of third-party
 packages. We find that many scientists
 use R and want to learn more. The emphasis of these materials is to give

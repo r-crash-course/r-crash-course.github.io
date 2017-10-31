@@ -28,8 +28,8 @@ contains packages that are more biology oriented and
 curated by the team of experts. 
 
 As bioinformaticians you will most likely operate within Bioconductor 
-universe. It is designed with exchangability in mind, many packages work 
-together and creation of powerfull pipelines becomes possible.
+universe. It is designed with interchangeability in mind, many packages work 
+together and creation of power-full pipelines becomes possible.
 
 To install Bioconductor visit [this](http://bioconductor.org/install/) page or do:
 
@@ -40,7 +40,7 @@ biocLite()
 ~~~
 {: .r}
 
-Lets install packages that will be usefull in this lesson.
+Lets install packages that will be useful in this lesson.
 
 
 ~~~
@@ -87,7 +87,7 @@ vignettes explaining in detail how to use them.
 
 [IRanges](http://bioconductor.org/packages/release/bioc/html/IRanges.html) package 
  designed to represent sequences, ranges representing indices along those sequences,
-and data related to those ranges. IRanges are very fast and provide multiple usefull 
+and data related to those ranges. IRanges are very fast and provide multiple useful 
 function to operate on them.
 
 
@@ -662,7 +662,7 @@ DataFrame with 10 rows and 2 columns
 ~~~
 {: .output}
 
-With these above packages you can now manipulate your reads in many ways and calculate meaningfull statistics. You know from previous lessons how to load different kinds of data, but genomic data has so many different formats. There is a lot of support from Bioconductor to load up genomic data in an easy way. Lets take a look at `ShortRead` package.
+With these above packages you can now manipulate your reads in many ways and calculate meaningful statistics. You know from previous lessons how to load different kinds of data, but genomic data has so many different formats. There is a lot of support from Bioconductor to load up genomic data in an easy way. Lets take a look at `ShortRead` package.
 
 ## ShortRead
 
@@ -687,7 +687,7 @@ length: 20000 reads; width: 72 cycles
 
 If you will have to parse large fastq files, it's better to do this in streams, but it's not our goal to create elaborate systems in this lesson. Above is simple, yet effective way of loading up data from fastq file. Notice the sample data is unpacked by the function on the fly. Yet, there is another class representing our data. There is many classes in Bioconductor, each of them has its own purpose. We will take a closer look later. You don't need to be very intimate with every class to use it. You can always treat new, unknown classes as containers for data. You know you can always access data using `slot()` to force your way. You should avoid this kind of data access, unless you know exactly what are you doing. 
 
-Lets try quick excercise in quality filtering our fastq reads. First of all, without loading the file into memory we can create quality raport. Run commands below. Report paths in automatically generated in your temporary directory, where you can store all kind of temporary files (function `tempdir()` or `tempfile()`). Paste path that you see into your browser to check out quality report.
+Lets try quick exercise in quality filtering our fastq reads. First of all, without loading the file into memory we can create quality report. Run commands below. Report paths in automatically generated in your temporary directory, where you can store all kind of temporary files (function `tempdir()` or `tempfile()`). Paste path that you see into your browser to check out quality report.
 
 
 ~~~
@@ -703,7 +703,7 @@ filtered_fq <- fq[nFilter()(fq)]
 ~~~
 {: .r}
 
-Above `()()` is a closure, first bracet is gonna output a function (nFilter is a function that outputs a function!), while second bracet is taking paramteres for that output function. Closures are functional contruct that are used in more abstract programming to create for example function factory. If you are interested in knowing more [here](http://adv-r.had.co.nz/Functional-programming.html#closures) is good resource. You can also achieve the same 
+Above `()()` is a closure, first bracket is gonna output a function (nFilter is a function that outputs a function!), while second bracer is taking parameters for that output function. Closures are functional construct that are used in more abstract programming to create for example function factory. If you are interested in knowing more [here](http://adv-r.had.co.nz/Functional-programming.html#closures) is good resource. You can also achieve the same 
 goal by doing.
 
 
@@ -745,7 +745,7 @@ all(nF(fq) == nFilter()(fq))
 > {: .solution}
 {: .challenge}
 
-This is an example of loading data into R and manipulating it. Now, after quality filtering lets assume that we want to process our reads a bit more. For that we need to extract sequences and operate on them. `DNAStringSet` is one of those classes that can hold string informations, usally reads. Let's explore them a bit more.
+This is an example of loading data into R and manipulating it. Now, after quality filtering lets assume that we want to process our reads a bit more. For that we need to extract sequences and operate on them. `DNAStringSet` is one of those classes that can hold string information, usually reads. Let's explore them a bit more.
 
 
 ~~~
@@ -775,7 +775,7 @@ seq
 
 ## Biostrings
 
-`Biostrings` - Memory efficient string containers, string matching algorithms, and other utilities, for fast manipulation of large biological sequences or sets of sequences. You probably noticed that with regular `character` you can't do many operations that you would like to. The basic subsetting with the use of `[]` won't do, `Biostrings` comes to the rescue. `DNAStringSet` contains `DNAString` objects and supports many standrad character vector operations. 
+`Biostrings` - Memory efficient string containers, string matching algorithms, and other utilities, for fast manipulation of large biological sequences or sets of sequences. You probably noticed that with regular `character` you can't do many operations that you would like to. The basic subsetting with the use of `[]` won't do, `Biostrings` comes to the rescue. `DNAStringSet` contains `DNAString` objects and supports many standard character vector operations. 
 
 
 ~~~
@@ -913,7 +913,7 @@ writePairwiseAlignments(aln[1]) # Lets see first alignment.
 ~~~
 ########################################
 # Program: Biostrings (version 2.44.2), a Bioconductor package
-# Rundate: Tue Oct 31 18:25:14 2017
+# Rundate: Tue Oct 31 19:43:52 2017
 ########################################
 #=======================================
 #
@@ -1009,9 +1009,9 @@ writeXStringSet(seq, temp_file)
 
 ## ggbio
 
-`ggbio` - package extends and specializes the grammar of graphics for biological data. The graphics are designed to answer common scientific questions, in particular those often asked of high throughput genomics data. All core Bioconductor data structures are supported, where appropriate. The package supports detailed views of particular genomic regions, as well as genome-wide overviews. Supported overviews include ideograms and grand linear views. High-level plots include sequence fragment length, edge-linked interval to data view, mismatch pileup, and several splicing summaries.
+`ggbio` - package extends and specializes the grammar of graphics for biological data. The graphics are designed to answer common scientific questions, in particular those often asked of high throughput genomic data. All core Bioconductor data structures are supported, where appropriate. The package supports detailed views of particular genomic regions, as well as genome-wide overviews. Supported overviews include ideograms and grand linear views. High-level plots include sequence fragment length, edge-linked interval to data view, mismatch pileup, and several splicing summaries.
 
-In short `ggbio` makes it easy to plot `GRanges` data, circular data, emulate genomic browser and plot ideograms! It uses the same syntacs as `ggplot2`, it build on top of it, and figures out how to align your data for display. lets plot our ranges.
+In short `ggbio` makes it easy to plot `GRanges` data, circular data, emulate genomic browser and plot ideograms! It uses the same syntax as `ggplot2`, it build on top of it, and figures out how to align your data for display. lets plot our ranges.
 
 
 ~~~

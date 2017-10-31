@@ -256,7 +256,7 @@ your issue.
 > separator is important, especially if you are working with international
 > colleagues, because different countries have different conventions for the
 > decimal point (i.e. comma vs period).
-> hint: use `??csv` to lookup csv related functions.
+> hint: use `??csv` to look up csv related functions.
 > > ## Solution to Challenge 3
 > >
 > > The standard R function for reading tab-delimited files with a period

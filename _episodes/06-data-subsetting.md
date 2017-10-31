@@ -327,7 +327,7 @@ x
 > ~~~
 > {: .output}
 >
-> After you find 3 different commands, compare notes with your neighbour. Did you have different strategies?
+> After you find 3 different commands, compare notes with your neighbor. Did you have different strategies?
 >
 > > ## Solution to challenge 1
 > >
