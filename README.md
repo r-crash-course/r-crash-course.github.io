@@ -10,7 +10,8 @@ Install all packages required in lessons. Install ruby and gem, jekyll. Run `mak
 Maintainers:
 
 * [Kornel Labun][JokingHero]
-* [Sara Sumic][]
+* [Sara Sumic][sarasumic]
 
 [gapminder]: http://www.gapminder.org/
 [JokingHero]: http://www.github.com/JokingHero
+[sarasumic]: https://github.com/sarasumic
