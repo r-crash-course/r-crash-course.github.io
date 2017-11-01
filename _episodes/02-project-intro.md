@@ -166,7 +166,7 @@ one to store the analysis scripts.
 Now we have a good directory structure we will now place/save the data file in the `data/` directory.
 
 > ## Challenge 1
-> Download the gapminder data from [here](https://raw.githubusercontent.com/jokinghero/jokinghero.github.io/master/_episodes_rmd/data/gapminder-FiveYearData.csv).
+> Download the gapminder data from [here](https://raw.githubusercontent.com/r-crash-course/r-crash-course.github.io/master/_episodes_rmd/data/gapminder-FiveYearData.csv).
 >
 > 1. Download the file (CTRL + S, right mouse click -> "Save as", or File -> "Save page as")
 > 2. Make sure it's saved under the name `gapminder-FiveYearData.csv`
@@ -197,7 +197,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > -rw-rw-r-- 1 ai ai 80K Oct 24 11:38 data/gapminder-FiveYearData.csv
+> > -rw-rw-r-- 1 ai ai 80K Nov  1 13:08 data/gapminder-FiveYearData.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.

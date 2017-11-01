@@ -913,7 +913,7 @@ writePairwiseAlignments(aln[1]) # Lets see first alignment.
 ~~~
 ########################################
 # Program: Biostrings (version 2.44.2), a Bioconductor package
-# Rundate: Tue Oct 31 19:43:52 2017
+# Rundate: Wed Nov  1 13:15:50 2017
 ########################################
 #=======================================
 #

@@ -29,7 +29,7 @@ Under the following terms:
 * **Attribution**---You must give appropriate credit (mentioning that
   your work is derived from work that is Copyright © Software
   Carpentry and, where practical, linking to
-  http://software-carpentry.org/) and also derived from this repsitory (r-crash-course.github.com), 
+  http://software-carpentry.org/) and also derived from this repsitory (r-crash-course.github.io), 
   provide a [link to the license][cc-by-human]. You may do
   so in any reasonable manner, but not in any way that suggests the
   licensor endorses you or your use.
