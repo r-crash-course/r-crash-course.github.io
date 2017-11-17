@@ -14,4 +14,8 @@ This course was prepared based on the resources below as well as [Software Carpe
 * [Making R packages](http://r-pkgs.had.co.nz/)
 * [Mastering ggplot2](http://moderngraphics11.pbworks.com/f/ggplot2-Book09hWickham.pdf)
 
+## Help us improve the course
+
+* [Evaluation Form](https://docs.google.com/forms/d/e/1FAIpQLScg6pWrkPahBq0oJjj-Fhcaxtsn7JM2Y-c2gf-jSJU0r1JUGA/viewform?usp=sf_link)
+
 
