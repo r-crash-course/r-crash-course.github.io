@@ -12,8 +12,8 @@ When programming in R, its good to be at least aware of existence of some functi
 
 ### Help
 ~~~
-?  
-str  
+?
+str
 ~~~
 {: .r}
 
@@ -27,7 +27,7 @@ assign, get
 ~~~
 {: .r}
 
-### Comparison 
+### Comparison
 ~~~
 all.equal, identical
 !=, ==, >, >=, <, <=
@@ -63,7 +63,7 @@ return, invisible
 ~~~
 {: .r}
 
-### Logical & sets 
+### Logical & sets
 ~~~
 &, |, !, xor, &&, ||
 all, any
@@ -86,7 +86,7 @@ as.matrix, data.matrix
 ~~~
 {: .r}
 
-### Making vectors 
+### Making vectors
 ~~~
 c
 rep, rep_len
@@ -98,7 +98,7 @@ choose, factorial, combn
 ~~~
 {: .r}
 
-### Lists & data.frames 
+### Lists & data.frames
 ~~~
 list, unlist
 data.frame, as.data.frame
@@ -107,7 +107,7 @@ expand.grid
 ~~~
 {: .r}
 
-### Control flow 
+### Control flow
 ~~~
 if, &&, || (short circuiting)
 for, while
@@ -138,7 +138,7 @@ library(lubridate)
 ~~~
 {: .r}
 
-### Character manipulation 
+### Character manipulation
 ~~~
 grep, agrep
 gsub
@@ -153,7 +153,7 @@ library(stringr)
 ~~~
 {: .r}
 
-### Factors 
+### Factors
 ~~~
 factor, levels, nlevels
 reorder, relevel
@@ -174,7 +174,7 @@ library(abind)
 {: .r}
 
 ## Statistics
-### Ordering and tabulating 
+### Ordering and tabulating
 ~~~
 duplicated, unique
 merge
@@ -184,7 +184,7 @@ table, ftable
 ~~~
 {: .r}
 
-### Linear models 
+### Linear models
 ~~~
 fitted, predict, resid, rstandard
 lm, glm
@@ -204,16 +204,16 @@ apropos("\\.test$")
 {: .r}
 
 
-### Random variables 
+### Random variables
 ~~~
-(q, p, d, r) * (beta, binom, cauchy, chisq, exp, f, gamma, geom, 
-  hyper, lnorm, logis, multinom, nbinom, norm, pois, signrank, t, 
+(q, p, d, r) * (beta, binom, cauchy, chisq, exp, f, gamma, geom,
+  hyper, lnorm, logis, multinom, nbinom, norm, pois, signrank, t,
   unif, weibull, wilcox, birthday, tukey)
 ~~~
 {: .r}
 
 
-### Matrix algebra 
+### Matrix algebra
 ~~~
 crossprod, tcrossprod
 eigen, qr, svd
@@ -223,8 +223,10 @@ solve
 ~~~
 {: .r}
 
-##Working with R
-### Workspace 
+
+## Working with R
+
+### Workspace
 ~~~
 ls, exists, rm
 getwd, setwd
@@ -286,7 +288,7 @@ library(foreign)
 ~~~
 {: .r}
 
-### Files and directories 
+### Files and directories
 ~~~
 dir
 basename, dirname, tools::file_ext

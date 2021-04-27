@@ -1,0 +1,10 @@
+I"…<p>This lesson assumes you have the R, RStudio software installed on your computer.</p>
+
+<p><strong>R</strong> can be downloaded <a href="https://cran.r-project.org/mirrors.html">here</a>. Select mirror closest to you eg. <a href="http://cran.uib.no/">Bergen</a>, then download R for your operating system and install.</p>
+
+<p><strong>RStudio</strong> is an environment for developingg using R.
+It can be downloaded <a href="https://www.rstudio.com/products/rstudio/download/#download">here</a>.
+You will need the Desktop version for your computer.</p>
+
+<p>In case you <strong>canâ€™t install</strong> anything on your own computer it is possible to use RStudio installed on the computer in the <a href="https://rstudio.cloud/">cloud</a>. However this solution provides only a couple of computing hours for free. If you need to use this solution, you can increase your free compute time by decreasing RAM and CPU usage. To do that go to <code class="language-plaintext highlighter-rouge">Options</code> -&gt; <code class="language-plaintext highlighter-rouge">Change memory allocation to 0.5 GB</code> -&gt; <code class="language-plaintext highlighter-rouge">Change CPU allocation to 0.5 CPU</code> -&gt; <code class="language-plaintext highlighter-rouge">Apply Changes</code>. You can also consider subscribing to the Cloud Plus for one month for 5$, this should provide you with sufficient computing power.</p>
+:ET

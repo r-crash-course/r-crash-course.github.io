@@ -1,7 +1,7 @@
 ---
 title: Control Flow
 teaching: 45
-exercises: 20
+exercises: 90
 questions:
 - "How can I make data-dependent choices in R?"
 - "How can I repeat operations in R?"
@@ -325,6 +325,7 @@ output_vector2
 > {: .solution}
 {: .challenge}
 
+
 > ## Challenge 3
 >
 > Write a script that loops through the `gapminder` data by continent and prints out
@@ -365,7 +366,7 @@ output_vector2
 > >
 > > for( iContinent in unique(gapminder$continent) ){
 > >    tmp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
-> >    
+> >
 > >    if(tmp < thresholdValue){
 > >        cat("Average Life Expectancy in", iContinent, "is less than", thresholdValue, "\n")
 > >    }
@@ -391,10 +392,10 @@ output_vector2
 > > ```{r 07-chall-04-sol, eval=FALSE}
 > >  lowerThreshold <- 50
 > >  upperThreshold <- 70
-> >  
+> >
 > > for( iCountry in unique(gapminder$country) ){
 > >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
-> >     
+> >
 > >     if(tmp < lowerThreshold){
 > >         cat("Average Life Expectancy in", iCountry, "is less than", lowerThreshold, "\n")
 > >     }
@@ -416,7 +417,7 @@ output_vector2
 > tests whether the country starts with a 'B', and graphs life expectancy
 > against time as a line graph if the mean life expectancy is under 50 years.
 >
-> > Solution for Challenge 5
+> > ## Solution for Challenge 5
 > >
 > > We will use the `grep` command that was introduced in the Unix Shell lesson to find countries that start with "B."
 > > Lets understand how to do this first.
@@ -441,10 +442,10 @@ output_vector2
 > >
 > > for( iCountry in candidateCountries){
 > >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
-> >     
+> >
 > >     if(tmp < thresholdValue){
 > >         cat("Average Life Expectancy in", iCountry, "is less than", thresholdValue, "plotting life expectancy graph... \n")
-> >         
+> >
 > >         with(subset(gapminder, country==iCountry),
 > >                 plot(year,lifeExp,
 > >                      type="o",
@@ -455,6 +456,7 @@ output_vector2
 > >               ) # end with
 > >     } # end for loop
 > >     rm(tmp)
-> >  }```
+> >  }
+> >```
 > {: .solution}
 {: .challenge}

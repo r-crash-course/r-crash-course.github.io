@@ -1,0 +1,469 @@
+I"�l<p>Manipulation of dataframes means many things to many researchers, we often
+select certain observations (rows) or variables (columns), we often group the
+data by a certain variable(s), or we even calculate summary statistics. We can
+do these operations using the normal base R operations:</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mean(gapminder[gapminder$continent == "Africa", "gdpPercap"])
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 2193.755
+</code></pre></div></div>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mean(gapminder[gapminder$continent == "Americas", "gdpPercap"])
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 7136.11
+</code></pre></div></div>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mean(gapminder[gapminder$continent == "Asia", "gdpPercap"])
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 7902.15
+</code></pre></div></div>
+
+<p>But this isn’t very <em>nice</em> because there is a fair bit of repetition. Repeating
+yourself will cost you time, both now and later, and potentially introduce some
+nasty bugs.</p>
+
+<h2 id="the-dplyr-package">The <code class="language-plaintext highlighter-rouge">dplyr</code> package</h2>
+
+<p>Luckily, the <a href="https://cran.r-project.org/web/packages/dplyr/dplyr.pdf"><code class="language-plaintext highlighter-rouge">dplyr</code></a>
+package provides a number of very useful functions for manipulating dataframes
+in a way that will reduce the above repetition, reduce the probability of making
+errors, and probably even save you some typing. As an added bonus, you might
+even find the <code class="language-plaintext highlighter-rouge">dplyr</code> grammar easier to read.</p>
+
+<p>Here we’re going to cover 6 of the most commonly used functions as well as using
+pipes (<code class="language-plaintext highlighter-rouge">%&gt;%</code>) to combine them.</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">select()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">filter()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">group_by()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">summarize()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">mutate()</code></li>
+</ol>
+
+<p>If you have have not installed this package earlier, please do so:</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>install.packages('dplyr')
+</code></pre></div></div>
+
+<p>Now let’s load the package:</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>library("dplyr")
+</code></pre></div></div>
+
+<h2 id="using-select">Using select()</h2>
+
+<p>If, for example, we wanted to move forward with only a few of the variables in
+our dataframe we could use the <code class="language-plaintext highlighter-rouge">select()</code> function. This will keep only the
+variables you select.</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>year_country_gdp &lt;- select(gapminder,year,country,gdpPercap)
+</code></pre></div></div>
+
+<p><img src="../fig/13-dplyr-fig1.png" alt="" /></p>
+
+<p>If we open up <code class="language-plaintext highlighter-rouge">year_country_gdp</code> we’ll see that it only contains the year,
+country and gdpPercap. Above we used ‘normal’ grammar, but the strengths of
+<code class="language-plaintext highlighter-rouge">dplyr</code> lie in combining several functions using pipes. Since the pipes grammar
+is unlike anything we’ve seen in R before, let’s repeat what we’ve done above
+using pipes.</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>year_country_gdp &lt;- gapminder %&gt;% select(year,country,gdpPercap)
+</code></pre></div></div>
+
+<p>To help you understand why we wrote that in that way, let’s walk through it step
+by step. First we summon the gapminder dataframe and pass it on, using the pipe
+symbol <code class="language-plaintext highlighter-rouge">%&gt;%</code>, to the next step, which is the <code class="language-plaintext highlighter-rouge">select()</code> function. In this case
+we don’t specify which data object we use in the <code class="language-plaintext highlighter-rouge">select()</code> function since in
+gets that from the previous pipe. <strong>Fun Fact</strong>: There is a good chance you have
+encountered pipes before in the shell. In R, a pipe symbol is <code class="language-plaintext highlighter-rouge">%&gt;%</code> while in the
+shell it is <code class="language-plaintext highlighter-rouge">|</code> but the concept is the same!</p>
+
+<h2 id="using-filter">Using filter()</h2>
+
+<p>If we now wanted to move forward with the above, but only with European
+countries, we can combine <code class="language-plaintext highlighter-rouge">select</code> and <code class="language-plaintext highlighter-rouge">filter</code></p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>year_country_gdp_euro &lt;- gapminder %&gt;%
+    filter(continent=="Europe") %&gt;%
+    select(year,country,gdpPercap)
+</code></pre></div></div>
+
+<blockquote class="challenge">
+  <h2 id="challenge-1">Challenge 1</h2>
+
+  <p>Write a single command (which can span multiple lines and includes pipes) that
+will produce a dataframe that has the African values for <code class="language-plaintext highlighter-rouge">lifeExp</code>, <code class="language-plaintext highlighter-rouge">country</code>
+and <code class="language-plaintext highlighter-rouge">year</code>, but not for other Continents.  How many rows does your dataframe
+have and why?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-1">Solution to Challenge 1</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>year_country_lifeExp_Africa &lt;- gapminder %&gt;%
+                           filter(continent=="Africa") %&gt;%
+                           select(year,country,lifeExp)
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<p>As with last time, first we pass the gapminder dataframe to the <code class="language-plaintext highlighter-rouge">filter()</code>
+function, then we pass the filtered version of the gapminder dataframe to the
+<code class="language-plaintext highlighter-rouge">select()</code> function. <strong>Note:</strong> The order of operations is very important in this
+case. If we used ‘select’ first, filter would not be able to find the variable
+continent since we would have removed it in the previous step.</p>
+
+<h2 id="using-group_by-and-summarize">Using group_by() and summarize()</h2>
+
+<p>Now, we were supposed to be reducing the error prone repetitiveness of what can
+be done with base R, but up to now we haven’t done that since we would have to
+repeat the above for each continent. Instead of <code class="language-plaintext highlighter-rouge">filter()</code>, which will only pass
+observations that meet your criteria (in the above: <code class="language-plaintext highlighter-rouge">continent=="Europe"</code>), we
+can use <code class="language-plaintext highlighter-rouge">group_by()</code>, which will essentially use every unique criteria that you
+could have used in filter.</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>str(gapminder)
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'data.frame':	1704 obs. of  6 variables:
+ $ country  : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
+ $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: chr  "Asia" "Asia" "Asia" "Asia" ...
+ $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num  779 821 853 836 740 ...
+</code></pre></div></div>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>str(gapminder %&gt;% group_by(continent))
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grouped_df[,6] [1,704 × 6] (S3: grouped_df/tbl_df/tbl/data.frame)
+ $ country  : chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
+ $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ pop      : num [1:1704] 8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: chr [1:1704] "Asia" "Asia" "Asia" "Asia" ...
+ $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
+ - attr(*, "groups")= tibble[,2] [5 × 2] (S3: tbl_df/tbl/data.frame)
+  ..$ continent: chr [1:5] "Africa" "Americas" "Asia" "Europe" ...
+  ..$ .rows    : list&lt;int&gt; [1:5] 
+  .. ..$ : int [1:624] 25 26 27 28 29 30 31 32 33 34 ...
+  .. ..$ : int [1:300] 49 50 51 52 53 54 55 56 57 58 ...
+  .. ..$ : int [1:396] 1 2 3 4 5 6 7 8 9 10 ...
+  .. ..$ : int [1:360] 13 14 15 16 17 18 19 20 21 22 ...
+  .. ..$ : int [1:24] 61 62 63 64 65 66 67 68 69 70 ...
+  .. ..@ ptype: int(0) 
+  ..- attr(*, ".drop")= logi TRUE
+</code></pre></div></div>
+<p>You will notice that the structure of the dataframe where we used <code class="language-plaintext highlighter-rouge">group_by()</code>
+(<code class="language-plaintext highlighter-rouge">grouped_df</code>) is not the same as the original <code class="language-plaintext highlighter-rouge">gapminder</code> (<code class="language-plaintext highlighter-rouge">data.frame</code>). A
+<code class="language-plaintext highlighter-rouge">grouped_df</code> can be thought of as a <code class="language-plaintext highlighter-rouge">list</code> where each item in the <code class="language-plaintext highlighter-rouge">list</code>is a
+<code class="language-plaintext highlighter-rouge">data.frame</code> which contains only the rows that correspond to the a particular
+value <code class="language-plaintext highlighter-rouge">continent</code> (at least in the example above).</p>
+
+<p><img src="../fig/13-dplyr-fig2.png" alt="" /></p>
+
+<h2 id="using-summarize">Using summarize()</h2>
+
+<p>The above was a bit on the uneventful side but <code class="language-plaintext highlighter-rouge">group_by()</code> is much more
+exciting in conjunction with <code class="language-plaintext highlighter-rouge">summarize()</code>. This will allow us to create new
+variable(s) by using functions that repeat for each of the continent-specific
+data frames. That is to say, using the <code class="language-plaintext highlighter-rouge">group_by()</code> function, we split our
+original dataframe into multiple pieces, then we can run functions
+(e.g. <code class="language-plaintext highlighter-rouge">mean()</code> or <code class="language-plaintext highlighter-rouge">sd()</code>) within <code class="language-plaintext highlighter-rouge">summarize()</code>.</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gdp_bycontinents &lt;- gapminder %&gt;%
+    group_by(continent) %&gt;%
+    summarize(mean_gdpPercap=mean(gdpPercap))
+</code></pre></div></div>
+
+<p><img src="../fig/13-dplyr-fig3.png" alt="" /></p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>continent mean_gdpPercap
+     &lt;fctr&gt;          &lt;dbl&gt;
+1    Africa       2193.755
+2  Americas       7136.110
+3      Asia       7902.150
+4    Europe      14469.476
+5   Oceania      18621.609
+</code></pre></div></div>
+
+<p>That allowed us to calculate the mean gdpPercap for each continent, but it gets
+even better.</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-2">Challenge 2</h2>
+
+  <p>Calculate the average life expectancy per country. Which has the longest average life
+expectancy and which has the shortest average life expectancy?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-2">Solution to Challenge 2</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lifeExp_bycountry &lt;- gapminder %&gt;%
+   group_by(country) %&gt;%
+   summarize(mean_lifeExp=mean(lifeExp))
+lifeExp_bycountry %&gt;%
+   filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
+</code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code># A tibble: 2 x 2
+ country      mean_lifeExp
+ &lt;chr&gt;               &lt;dbl&gt;
+1 Iceland              76.5
+2 Sierra Leone         36.8
+</code></pre></div>    </div>
+    <p>Another way to do this is to use the <code class="language-plaintext highlighter-rouge">dplyr</code> function <code class="language-plaintext highlighter-rouge">arrange()</code>, which
+arranges the rows in a data frame according to the order of one or more
+variables from the data frame.  It has similar syntax to other functions from
+the <code class="language-plaintext highlighter-rouge">dplyr</code> package. You can use <code class="language-plaintext highlighter-rouge">desc()</code> inside <code class="language-plaintext highlighter-rouge">arrange()</code> to sort in
+descending order.</p>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lifeExp_bycountry %&gt;%
+   arrange(mean_lifeExp) %&gt;%
+   head(1)
+</code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code># A tibble: 1 x 2
+ country      mean_lifeExp
+ &lt;chr&gt;               &lt;dbl&gt;
+1 Sierra Leone         36.8
+</code></pre></div>    </div>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lifeExp_bycountry %&gt;%
+   arrange(desc(mean_lifeExp)) %&gt;%
+   head(1)
+</code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code># A tibble: 1 x 2
+ country mean_lifeExp
+ &lt;chr&gt;          &lt;dbl&gt;
+1 Iceland         76.5
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<p>The function <code class="language-plaintext highlighter-rouge">group_by()</code> allows us to group by multiple variables. Let’s group by <code class="language-plaintext highlighter-rouge">year</code> and <code class="language-plaintext highlighter-rouge">continent</code>.</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gdp_bycontinents_byyear &lt;- gapminder %&gt;%
+    group_by(continent,year) %&gt;%
+    summarize(mean_gdpPercap=mean(gdpPercap))
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+</code></pre></div></div>
+
+<p>That is already quite powerful, but it gets even better! You’re not limited to defining 1 new variable in <code class="language-plaintext highlighter-rouge">summarize()</code>.</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gdp_pop_bycontinents_byyear &lt;- gapminder %&gt;%
+    group_by(continent,year) %&gt;%
+    summarize(mean_gdpPercap=mean(gdpPercap),
+              sd_gdpPercap=sd(gdpPercap),
+              mean_pop=mean(pop),
+              sd_pop=sd(pop))
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+</code></pre></div></div>
+
+<h2 id="count-and-n">count() and n()</h2>
+
+<p>A very common operation is to count the number of observations for each
+group. The <code class="language-plaintext highlighter-rouge">dplyr</code> package comes with two related functions that help with this.</p>
+
+<p>For instance, if we wanted to check the number of countries included in the
+dataset for the year 2002, we can use the <code class="language-plaintext highlighter-rouge">count()</code> function. It takes the name
+of one or more columns that contain the groups we are interested in, and we can
+optionally sort the results in descending order by adding <code class="language-plaintext highlighter-rouge">sort=TRUE</code>:</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gapminder %&gt;%
+    filter(year == 2002) %&gt;%
+    count(continent, sort = TRUE)
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  continent  n
+1    Africa 52
+2      Asia 33
+3    Europe 30
+4  Americas 25
+5   Oceania  2
+</code></pre></div></div>
+
+<p>If we need to use the number of observations in calculations, the <code class="language-plaintext highlighter-rouge">n()</code> function
+is useful. For instance, if we wanted to get the standard error of the life
+expectency per continent:</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gapminder %&gt;%
+    group_by(continent) %&gt;%
+    summarize(se_pop = sd(lifeExp)/sqrt(n()))
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code># A tibble: 5 x 2
+  continent se_pop
+  &lt;chr&gt;      &lt;dbl&gt;
+1 Africa     0.366
+2 Americas   0.540
+3 Asia       0.596
+4 Europe     0.286
+5 Oceania    0.775
+</code></pre></div></div>
+
+<p>You can also chain together several summary operations; in this case calculating the <code class="language-plaintext highlighter-rouge">minimum</code>, <code class="language-plaintext highlighter-rouge">maximum</code>, <code class="language-plaintext highlighter-rouge">mean</code> and <code class="language-plaintext highlighter-rouge">se</code> of each continent’s per-country life-expectancy:</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gapminder %&gt;%
+    group_by(continent) %&gt;%
+    summarize(
+      mean_le = mean(lifeExp),
+      min_le = min(lifeExp),
+      max_le = max(lifeExp),
+      se_le = sd(lifeExp)/sqrt(n()))
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code># A tibble: 5 x 5
+  continent mean_le min_le max_le se_le
+  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1 Africa       48.9   23.6   76.4 0.366
+2 Americas     64.7   37.6   80.7 0.540
+3 Asia         60.1   28.8   82.6 0.596
+4 Europe       71.9   43.6   81.8 0.286
+5 Oceania      74.3   69.1   81.2 0.775
+</code></pre></div></div>
+
+<h2 id="using-mutate">Using mutate()</h2>
+
+<p>We can also create new variables prior to (or even after) summarizing information using <code class="language-plaintext highlighter-rouge">mutate()</code>.</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gdp_pop_bycontinents_byyear &lt;- gapminder %&gt;%
+    mutate(gdp_billion=gdpPercap*pop/10^9) %&gt;%
+    group_by(continent,year) %&gt;%
+    summarize(mean_gdpPercap=mean(gdpPercap),
+              sd_gdpPercap=sd(gdpPercap),
+              mean_pop=mean(pop),
+              sd_pop=sd(pop),
+              mean_gdp_billion=mean(gdp_billion),
+              sd_gdp_billion=sd(gdp_billion))
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+</code></pre></div></div>
+
+<h2 id="connect-mutate-with-logical-filtering-ifelse">Connect mutate with logical filtering: ifelse</h2>
+
+<p>When creating new variables, we can hook this with a logical condition. A simple combination of
+<code class="language-plaintext highlighter-rouge">mutate()</code> and <code class="language-plaintext highlighter-rouge">ifelse()</code> facilitates filtering right where it is needed: in the moment of creating something new.
+This easy-to-read statement is a fast and powerful way of discarding certain data (even though the overall dimension
+of the data frame will not change) or for updating values depending on this given condition.</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## keeping all data but "filtering" after a certain condition
+# calculate GDP only for people with a life expectation above 25
+gdp_pop_bycontinents_byyear_above25 &lt;- gapminder %&gt;%
+    mutate(gdp_billion = ifelse(lifeExp &gt; 25, gdpPercap * pop / 10^9, NA)) %&gt;%
+    group_by(continent, year) %&gt;%
+    summarize(mean_gdpPercap = mean(gdpPercap),
+              sd_gdpPercap = sd(gdpPercap),
+              mean_pop = mean(pop),
+              sd_pop = sd(pop),
+              mean_gdp_billion = mean(gdp_billion),
+              sd_gdp_billion = sd(gdp_billion))
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+</code></pre></div></div>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## updating only if certain condition is fullfilled
+# for life expectations above 40 years, the gpd to be expected in the future is scaled
+gdp_future_bycontinents_byyear_high_lifeExp &lt;- gapminder %&gt;%
+    mutate(gdp_futureExpectation = ifelse(lifeExp &gt; 40, gdpPercap * 1.5, gdpPercap)) %&gt;%
+    group_by(continent, year) %&gt;%
+    summarize(mean_gdpPercap = mean(gdpPercap),
+              mean_gdpPercap_expected = mean(gdp_futureExpectation))
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+</code></pre></div></div>
+
+<h2 id="combining-dplyr-and-ggplot2">Combining <code class="language-plaintext highlighter-rouge">dplyr</code> and <code class="language-plaintext highlighter-rouge">ggplot2</code></h2>
+
+<p>In the plotting lesson we looked at how to make a multi-panel figure by adding
+a layer of facet panels using <code class="language-plaintext highlighter-rouge">ggplot2</code>. Here is the code we used (with some
+extra comments):</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Get the start letter of each country
+starts.with &lt;- substr(gapminder$country, start = 1, stop = 1)
+# Filter countries that start with "A" or "Z"
+az.countries &lt;- gapminder[starts.with %in% c("A", "Z"), ]
+# Make the plot
+ggplot(data = az.countries, aes(x = year, y = lifeExp, color = continent)) +
+  geom_line() + facet_wrap( ~ country)
+</code></pre></div></div>
+
+<p><img src="../fig/rmd-13-unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" /></p>
+
+<p>This code makes the right plot but it also creates some variables (<code class="language-plaintext highlighter-rouge">starts.with</code>
+and <code class="language-plaintext highlighter-rouge">az.countries</code>) that we might not have any other uses for. Just as we used
+<code class="language-plaintext highlighter-rouge">%&gt;%</code> to pipe data along a chain of <code class="language-plaintext highlighter-rouge">dplyr</code> functions we can use it to pass data
+to <code class="language-plaintext highlighter-rouge">ggplot()</code>. Because <code class="language-plaintext highlighter-rouge">%&gt;%</code> replaces the first argument in a function we don’t
+need to specify the <code class="language-plaintext highlighter-rouge">data =</code> argument in the <code class="language-plaintext highlighter-rouge">ggplot()</code> function. By combining
+<code class="language-plaintext highlighter-rouge">dplyr</code> and <code class="language-plaintext highlighter-rouge">ggplot2</code> functions we can make the same figure without creating any
+new variables or modifying the data.</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gapminder %&gt;%
+   # Get the start letter of each country
+   mutate(startsWith = substr(country, start = 1, stop = 1)) %&gt;%
+   # Filter countries that start with "A" or "Z"
+   filter(startsWith %in% c("A", "Z")) %&gt;%
+   # Make the plot
+   ggplot(aes(x = year, y = lifeExp, color = continent)) +
+   geom_line() +
+   facet_wrap( ~ country)
+</code></pre></div></div>
+
+<p><img src="../fig/rmd-13-unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" /></p>
+
+<p>Using <code class="language-plaintext highlighter-rouge">dplyr</code> functions also helps us simplify things, for example we could
+combine the first two steps:</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gapminder %&gt;%
+    # Filter countries that start with "A" or "Z"
+	filter(substr(country, start = 1, stop = 1) %in% c("A", "Z")) %&gt;%
+	# Make the plot
+	ggplot(aes(x = year, y = lifeExp, color = continent)) +
+	geom_line() +
+	facet_wrap( ~ country)
+</code></pre></div></div>
+
+<p><img src="../fig/rmd-13-unnamed-chunk-23-1.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" style="display: block; margin: auto;" /></p>
+
+<blockquote class="challenge">
+  <h2 id="advanced-challenge">Advanced Challenge</h2>
+
+  <p>Calculate the average life expectancy in 2002 of 2 randomly selected countries
+for each continent. Then arrange the continent names in reverse order.
+<strong>Hint:</strong> Use the <code class="language-plaintext highlighter-rouge">dplyr</code> functions <code class="language-plaintext highlighter-rouge">arrange()</code> and <code class="language-plaintext highlighter-rouge">sample_n()</code>, they have
+similar syntax to other dplyr functions.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-advanced-challenge">Solution to Advanced Challenge</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lifeExp_2countries_bycontinents &lt;- gapminder %&gt;%
+   filter(year==2002) %&gt;%
+   group_by(continent) %&gt;%
+   sample_n(2) %&gt;%
+   summarize(mean_lifeExp=mean(lifeExp)) %&gt;%
+   arrange(desc(mean_lifeExp))
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<h2 id="other-great-resources">Other great resources</h2>
+
+<ul>
+  <li><a href="http://r4ds.had.co.nz/">R for Data Science</a></li>
+  <li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Data Wrangling Cheat sheet</a></li>
+  <li><a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">Introduction to dplyr</a></li>
+  <li><a href="https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/">Data wrangling with R and RStudio</a></li>
+</ul>
+:ET

@@ -1,7 +1,7 @@
 ---
 title: "Data Structures"
 teaching: 40
-exercises: 15
+exercises: 120
 questions:
 - "How can I read data in R?"
 - "What are the basic data types in R?"
@@ -62,11 +62,11 @@ cats
 The `read.table` function is used for reading in tabular data stored in a text
 file where the columns of data are separated by punctuation characters such as
 CSV files (csv = comma-separated values). Tabs and commas are the most common
-punctuation characters used to separate or delimit data points in csv files. 
+punctuation characters used to separate or delimit data points in csv files.
 For convenience R provides 2 other versions of `read.table`. These are: `read.csv`
 for files where the data are separated with commas and `read.delim` for files
 where the data are separated with tabs. Of these three functions `read.csv` is
-the most commonly used.  If needed it is possible to override the default 
+the most commonly used.  If needed it is possible to override the default
 delimiting punctuation marks for both `read.csv` and `read.delim`.
 
 
@@ -96,8 +96,7 @@ cats$coat
 
 
 ~~~
-[1] calico black  tabby 
-Levels: black calico tabby
+[1] "calico" "black"  "tabby" 
 ~~~
 {: .output}
 
@@ -142,17 +141,9 @@ cats$weight + cats$coat
 
 
 ~~~
-Warning in Ops.factor(cats$weight, cats$coat): '+' not meaningful for
-factors
+Error in cats$weight + cats$coat: non-numeric argument to binary operator
 ~~~
 {: .error}
-
-
-
-~~~
-[1] NA NA NA
-~~~
-{: .output}
 
 Understanding what happened here is key to successfully analyzing data in R.
 
@@ -284,7 +275,7 @@ typeof(cats$weight)
 
 
 ~~~
-[1] "integer"
+[1] "character"
 ~~~
 {: .output}
 
@@ -300,16 +291,9 @@ cats$weight + 2
 
 
 ~~~
-Warning in Ops.factor(cats$weight, 2): '+' not meaningful for factors
+Error in cats$weight + 2: non-numeric argument to binary operator
 ~~~
 {: .error}
-
-
-
-~~~
-[1] NA NA NA NA
-~~~
-{: .output}
 
 What happened? When R reads a csv file into one of these tables, it insists that
 everything in a column be the same basic type; if it can't understand
@@ -445,8 +429,8 @@ a column to be the same basic data type.
 > > By keeping everything in a column the same, we allow ourselves to make simple
 > > assumptions about our data; if you can interpret one entry in the column as a
 > > number, then you can interpret *all* of them as numbers, so we don't have to
-> > check every time. This consistency is what people mean when they talk about 
-> > *clean data*; in the long run, strict consistency goes a long way to making 
+> > check every time. This consistency is what people mean when they talk about
+> > *clean data*; in the long run, strict consistency goes a long way to making
 > > our lives easier in R.
 > {: .solution}
 {: .discussion}
@@ -670,13 +654,13 @@ seq(1,10, by=0.1)
 
 
 ~~~
- [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3
-[15]  2.4  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7
-[29]  3.8  3.9  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1
-[43]  5.2  5.3  5.4  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5
-[57]  6.6  6.7  6.8  6.9  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9
-[71]  8.0  8.1  8.2  8.3  8.4  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3
-[85]  9.4  9.5  9.6  9.7  9.8  9.9 10.0
+ [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3  2.4
+[16]  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7  3.8  3.9
+[31]  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1  5.2  5.3  5.4
+[46]  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5  6.6  6.7  6.8  6.9
+[61]  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9  8.0  8.1  8.2  8.3  8.4
+[76]  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3  9.4  9.5  9.6  9.7  9.8  9.9
+[91] 10.0
 ~~~
 {: .output}
 
@@ -1354,7 +1338,7 @@ class(matrix_example)
 
 
 ~~~
-[1] "matrix"
+[1] "matrix" "array" 
 ~~~
 {: .output}
 

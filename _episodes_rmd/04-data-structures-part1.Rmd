@@ -1,7 +1,7 @@
 ---
 title: "Data Structures"
 teaching: 40
-exercises: 15
+exercises: 120
 questions:
 - "How can I read data in R?"
 - "What are the basic data types in R?"
@@ -65,11 +65,11 @@ cats
 The `read.table` function is used for reading in tabular data stored in a text
 file where the columns of data are separated by punctuation characters such as
 CSV files (csv = comma-separated values). Tabs and commas are the most common
-punctuation characters used to separate or delimit data points in csv files. 
+punctuation characters used to separate or delimit data points in csv files.
 For convenience R provides 2 other versions of `read.table`. These are: `read.csv`
 for files where the data are separated with commas and `read.delim` for files
 where the data are separated with tabs. Of these three functions `read.csv` is
-the most commonly used.  If needed it is possible to override the default 
+the most commonly used.  If needed it is possible to override the default
 delimiting punctuation marks for both `read.csv` and `read.delim`.
 
 
@@ -242,8 +242,8 @@ a column to be the same basic data type.
 > > By keeping everything in a column the same, we allow ourselves to make simple
 > > assumptions about our data; if you can interpret one entry in the column as a
 > > number, then you can interpret *all* of them as numbers, so we don't have to
-> > check every time. This consistency is what people mean when they talk about 
-> > *clean data*; in the long run, strict consistency goes a long way to making 
+> > check every time. This consistency is what people mean when they talk about
+> > *clean data*; in the long run, strict consistency goes a long way to making
 > > our lives easier in R.
 > {: .solution}
 {: .discussion}

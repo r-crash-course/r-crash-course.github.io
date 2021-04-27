@@ -1,7 +1,7 @@
 ---
 title: Creating Publication-Quality Graphics
 teaching: 60
-exercises: 20
+exercises: 60
 questions:
 - "How can I create publication-quality graphics in R?"
 objectives:
@@ -279,6 +279,13 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .r}
 
+
+
+~~~
+`geom_smooth()` using formula 'y ~ x'
+~~~
+{: .output}
+
 <img src="../fig/rmd-08-lm-fit-1.png" title="plot of chunk lm-fit" alt="plot of chunk lm-fit" style="display: block; margin: auto;" />
 
 We can make the line thicker by *setting* the **size** aesthetic in the
@@ -290,6 +297,13 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point() + scale_x_log10() + geom_smooth(method="lm", size=1.5)
 ~~~
 {: .r}
+
+
+
+~~~
+`geom_smooth()` using formula 'y ~ x'
+~~~
+{: .output}
 
 <img src="../fig/rmd-08-lm-fit2-1.png" title="plot of chunk lm-fit2" alt="plot of chunk lm-fit2" style="display: block; margin: auto;" />
 
@@ -320,6 +334,13 @@ variables and their visual representation.
 > > ~~~
 > > {: .r}
 > > 
+> > 
+> > 
+> > ~~~
+> > `geom_smooth()` using formula 'y ~ x'
+> > ~~~
+> > {: .output}
+> > 
 > > <img src="../fig/rmd-08-ch4a-sol-1.png" title="plot of chunk ch4a-sol" alt="plot of chunk ch4a-sol" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
@@ -345,6 +366,13 @@ variables and their visual representation.
 > > geom_smooth(method="lm", size=1.5)
 > >~~~
 > >{: .r}
+> >
+> >
+> >
+> >~~~
+> >`geom_smooth()` using formula 'y ~ x'
+> >~~~
+> >{: .output}
 > >
 > ><img src="../fig/rmd-08-ch4b-sol-1.png" title="plot of chunk ch4b-sol" alt="plot of chunk ch4b-sol" style="display: block; margin: auto;" />
 > {: .solution}
@@ -392,11 +420,11 @@ elements. The x-axis is too cluttered, and the y axis should read
 "Life expectancy", rather than the column name in the data frame.
 
 We can do this by adding a couple of different layers. The **theme** layer
-controls the axis text, and overall text size. Labels for the axes, plot 
+controls the axis text, and overall text size. Labels for the axes, plot
 title and any legend can be set using the `labs` function. Legend titles
 are set using the same names we used in the `aes` specification. Thus below
-the color legend title is set using `color = "Continent"`, while the title 
-of a fill legend would be set using `fill = "MyTitle"`. 
+the color legend title is set using `color = "Continent"`, while the title
+of a fill legend would be set using `fill = "MyTitle"`.
 
 
 ~~~

@@ -1,7 +1,7 @@
 ---
 title: Writing Data
-teaching: 10
-exercises: 10
+teaching: 30
+exercises: 60
 questions:
 - "How can I save plots and data created in R?"
 objectives:
@@ -66,13 +66,13 @@ Open up this document and have a look.
 > > 
 > > ~~~
 > > pdf("Life_Exp_vs_time.pdf", width = 12, height = 4)
-> > > >
+> > 
 > > p <- ggplot(data = gapminder, aes(x = year, y = lifeExp, colour = country)) +
 > >   geom_line() +
 > >   theme(legend.position = "none")
-> > > >
+> > 
 > > p + facet_grid(. ~continent)
-> > > >
+> > 
 > > dev.off()
 > > ~~~
 > > {: .r}

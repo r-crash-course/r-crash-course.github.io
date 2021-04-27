@@ -1,7 +1,7 @@
 ---
 title: Control Flow
 teaching: 45
-exercises: 20
+exercises: 90
 questions:
 - "How can I make data-dependent choices in R?"
 - "How can I repeat operations in R?"
@@ -183,8 +183,8 @@ Did anyone get a warning message like this?
 
 
 ~~~
-Warning in if (gapminder$year == 2012) {: the condition has length > 1 and
-only the first element will be used
+Warning in if (gapminder$year == 2012) {: the condition has length > 1 and only
+the first element will be used
 ~~~
 {: .error}
 
@@ -312,9 +312,9 @@ output_vector
 
 
 ~~~
- [1] "1 a" "1 b" "1 c" "1 d" "1 e" "2 a" "2 b" "2 c" "2 d" "2 e" "3 a"
-[12] "3 b" "3 c" "3 d" "3 e" "4 a" "4 b" "4 c" "4 d" "4 e" "5 a" "5 b"
-[23] "5 c" "5 d" "5 e"
+ [1] "1 a" "1 b" "1 c" "1 d" "1 e" "2 a" "2 b" "2 c" "2 d" "2 e" "3 a" "3 b"
+[13] "3 c" "3 d" "3 e" "4 a" "4 b" "4 c" "4 d" "4 e" "5 a" "5 b" "5 c" "5 d"
+[25] "5 e"
 ~~~
 {: .output}
 
@@ -357,9 +357,9 @@ output_vector2
 
 
 ~~~
- [1] "1 a" "2 a" "3 a" "4 a" "5 a" "1 b" "2 b" "3 b" "4 b" "5 b" "1 c"
-[12] "2 c" "3 c" "4 c" "5 c" "1 d" "2 d" "3 d" "4 d" "5 d" "1 e" "2 e"
-[23] "3 e" "4 e" "5 e"
+ [1] "1 a" "2 a" "3 a" "4 a" "5 a" "1 b" "2 b" "3 b" "4 b" "5 b" "1 c" "2 c"
+[13] "3 c" "4 c" "5 c" "1 d" "2 d" "3 d" "4 d" "5 d" "1 e" "2 e" "3 e" "4 e"
+[25] "5 e"
 ~~~
 {: .output}
 
@@ -453,6 +453,7 @@ output_vector2
 > {: .solution}
 {: .challenge}
 
+
 > ## Challenge 3
 >
 > Write a script that loops through the `gapminder` data by continent and prints out
@@ -495,10 +496,10 @@ output_vector2
 > > 
 > > ~~~
 > > thresholdValue <- 50
-> > > >
+> > 
 > > for( iContinent in unique(gapminder$continent) ){
 > >    tmp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
-> >    
+> > 
 > >    if(tmp < thresholdValue){
 > >        cat("Average Life Expectancy in", iContinent, "is less than", thresholdValue, "\n")
 > >    }
@@ -507,7 +508,6 @@ output_vector2
 > >         } # end if else condition
 > >    rm(tmp)
 > >    } # end for loop
-> > > >
 > > ~~~
 > > {: .r}
 > {: .solution}
@@ -526,10 +526,10 @@ output_vector2
 > > ~~~
 > >  lowerThreshold <- 50
 > >  upperThreshold <- 70
-> >  
+> > 
 > > for( iCountry in unique(gapminder$country) ){
 > >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
-> >     
+> > 
 > >     if(tmp < lowerThreshold){
 > >         cat("Average Life Expectancy in", iCountry, "is less than", lowerThreshold, "\n")
 > >     }
@@ -552,7 +552,7 @@ output_vector2
 > tests whether the country starts with a 'B', and graphs life expectancy
 > against time as a line graph if the mean life expectancy is under 50 years.
 >
-> > Solution for Challenge 5
+> > ## Solution for Challenge 5
 > >
 > > We will use the `grep` command that was introduced in the Unix Shell lesson to find countries that start with "B."
 > > Lets understand how to do this first.
@@ -579,13 +579,13 @@ output_vector2
 > > ~~~
 > > thresholdValue <- 50
 > > candidateCountries <- grep("^B", unique(gapminder$country), value=TRUE)
-> > > >
+> > 
 > > for( iCountry in candidateCountries){
 > >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
-> >     
+> > 
 > >     if(tmp < thresholdValue){
 > >         cat("Average Life Expectancy in", iCountry, "is less than", thresholdValue, "plotting life expectancy graph... \n")
-> >         
+> > 
 > >         with(subset(gapminder, country==iCountry),
 > >                 plot(year,lifeExp,
 > >                      type="o",
@@ -596,8 +596,8 @@ output_vector2
 > >               ) # end with
 > >     } # end for loop
 > >     rm(tmp)
-> >  }```
-> > > {: .solution}
-> > {: .challenge}
+> >  }
 > > ~~~
 > > {: .r}
+> {: .solution}
+{: .challenge}

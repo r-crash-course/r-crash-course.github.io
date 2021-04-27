@@ -1,7 +1,7 @@
 ---
 title: Dataframe Manipulation with dplyr
-teaching: 40
-exercises: 15
+teaching: 60
+exercises: 120
 questions:
 - "How can I manipulate dataframes without repeating myself?"
 objectives:
@@ -192,10 +192,10 @@ str(gapminder)
 
 ~~~
 'data.frame':	1704 obs. of  6 variables:
- $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ country  : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
  $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
- $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ continent: chr  "Asia" "Asia" "Asia" "Asia" ...
  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
  $ gdpPercap: num  779 821 853 836 740 ...
 ~~~
@@ -211,27 +211,23 @@ str(gapminder %>% group_by(continent))
 
 
 ~~~
-Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':	1704 obs. of  6 variables:
- $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
- $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
- $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
- $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
- $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
- $ gdpPercap: num  779 821 853 836 740 ...
- - attr(*, "vars")= chr "continent"
- - attr(*, "drop")= logi TRUE
- - attr(*, "indices")=List of 5
-  ..$ : int  24 25 26 27 28 29 30 31 32 33 ...
-  ..$ : int  48 49 50 51 52 53 54 55 56 57 ...
-  ..$ : int  0 1 2 3 4 5 6 7 8 9 ...
-  ..$ : int  12 13 14 15 16 17 18 19 20 21 ...
-  ..$ : int  60 61 62 63 64 65 66 67 68 69 ...
- - attr(*, "group_sizes")= int  624 300 396 360 24
- - attr(*, "biggest_group_size")= int 624
- - attr(*, "labels")='data.frame':	5 obs. of  1 variable:
-  ..$ continent: Factor w/ 5 levels "Africa","Americas",..: 1 2 3 4 5
-  ..- attr(*, "vars")= chr "continent"
-  ..- attr(*, "drop")= logi TRUE
+grouped_df[,6] [1,704 × 6] (S3: grouped_df/tbl_df/tbl/data.frame)
+ $ country  : chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
+ $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+ $ pop      : num [1:1704] 8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: chr [1:1704] "Asia" "Asia" "Asia" "Asia" ...
+ $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
+ - attr(*, "groups")= tibble[,2] [5 × 2] (S3: tbl_df/tbl/data.frame)
+  ..$ continent: chr [1:5] "Africa" "Americas" "Asia" "Europe" ...
+  ..$ .rows    : list<int> [1:5] 
+  .. ..$ : int [1:624] 25 26 27 28 29 30 31 32 33 34 ...
+  .. ..$ : int [1:300] 49 50 51 52 53 54 55 56 57 58 ...
+  .. ..$ : int [1:396] 1 2 3 4 5 6 7 8 9 10 ...
+  .. ..$ : int [1:360] 13 14 15 16 17 18 19 20 21 22 ...
+  .. ..$ : int [1:24] 61 62 63 64 65 66 67 68 69 70 ...
+  .. ..@ ptype: int(0) 
+  ..- attr(*, ".drop")= logi TRUE
 ~~~
 {: .output}
 You will notice that the structure of the dataframe where we used `group_by()`
@@ -297,10 +293,10 @@ even better.
 > >
 > >~~~
 > ># A tibble: 2 x 2
-> >       country mean_lifeExp
-> >        <fctr>        <dbl>
-> >1      Iceland     76.51142
-> >2 Sierra Leone     36.76917
+> >  country      mean_lifeExp
+> >  <chr>               <dbl>
+> >1 Iceland              76.5
+> >2 Sierra Leone         36.8
 > >~~~
 > >{: .output}
 > Another way to do this is to use the `dplyr` function `arrange()`, which
@@ -320,9 +316,9 @@ even better.
 > >
 > >~~~
 > ># A tibble: 1 x 2
-> >       country mean_lifeExp
-> >        <fctr>        <dbl>
-> >1 Sierra Leone     36.76917
+> >  country      mean_lifeExp
+> >  <chr>               <dbl>
+> >1 Sierra Leone         36.8
 > >~~~
 > >{: .output}
 > >
@@ -340,8 +336,8 @@ even better.
 > >~~~
 > ># A tibble: 1 x 2
 > >  country mean_lifeExp
-> >   <fctr>        <dbl>
-> >1 Iceland     76.51142
+> >  <chr>          <dbl>
+> >1 Iceland         76.5
 > >~~~
 > >{: .output}
 > {: .solution}
@@ -358,6 +354,13 @@ gdp_bycontinents_byyear <- gapminder %>%
 ~~~
 {: .r}
 
+
+
+~~~
+`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+~~~
+{: .output}
+
 That is already quite powerful, but it gets even better! You're not limited to defining 1 new variable in `summarize()`.
 
 
@@ -370,6 +373,13 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
               sd_pop=sd(pop))
 ~~~
 {: .r}
+
+
+
+~~~
+`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+~~~
+{: .output}
 
 ## count() and n()
 
@@ -392,14 +402,12 @@ gapminder %>%
 
 
 ~~~
-# A tibble: 5 x 2
-  continent     n
-     <fctr> <int>
-1    Africa    52
-2      Asia    33
-3    Europe    30
-4  Americas    25
-5   Oceania     2
+  continent  n
+1    Africa 52
+2      Asia 33
+3    Europe 30
+4  Americas 25
+5   Oceania  2
 ~~~
 {: .output}
 
@@ -419,13 +427,13 @@ gapminder %>%
 
 ~~~
 # A tibble: 5 x 2
-  continent    se_pop
-     <fctr>     <dbl>
-1    Africa 0.3663016
-2  Americas 0.5395389
-3      Asia 0.5962151
-4    Europe 0.2863536
-5   Oceania 0.7747759
+  continent se_pop
+  <chr>      <dbl>
+1 Africa     0.366
+2 Americas   0.540
+3 Asia       0.596
+4 Europe     0.286
+5 Oceania    0.775
 ~~~
 {: .output}
 
@@ -447,13 +455,13 @@ gapminder %>%
 
 ~~~
 # A tibble: 5 x 5
-  continent  mean_le min_le max_le     se_le
-     <fctr>    <dbl>  <dbl>  <dbl>     <dbl>
-1    Africa 48.86533 23.599 76.442 0.3663016
-2  Americas 64.65874 37.579 80.653 0.5395389
-3      Asia 60.06490 28.801 82.603 0.5962151
-4    Europe 71.90369 43.585 81.757 0.2863536
-5   Oceania 74.32621 69.120 81.235 0.7747759
+  continent mean_le min_le max_le se_le
+  <chr>       <dbl>  <dbl>  <dbl> <dbl>
+1 Africa       48.9   23.6   76.4 0.366
+2 Americas     64.7   37.6   80.7 0.540
+3 Asia         60.1   28.8   82.6 0.596
+4 Europe       71.9   43.6   81.8 0.286
+5 Oceania      74.3   69.1   81.2 0.775
 ~~~
 {: .output}
 
@@ -475,6 +483,13 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 ~~~
 {: .r}
 
+
+
+~~~
+`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+~~~
+{: .output}
+
 ## Connect mutate with logical filtering: ifelse
 
 When creating new variables, we can hook this with a logical condition. A simple combination of
@@ -495,7 +510,19 @@ gdp_pop_bycontinents_byyear_above25 <- gapminder %>%
               sd_pop = sd(pop),
               mean_gdp_billion = mean(gdp_billion),
               sd_gdp_billion = sd(gdp_billion))
+~~~
+{: .r}
 
+
+
+~~~
+`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+~~~
+{: .output}
+
+
+
+~~~
 ## updating only if certain condition is fullfilled
 # for life expectations above 40 years, the gpd to be expected in the future is scaled
 gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
@@ -505,6 +532,13 @@ gdp_future_bycontinents_byyear_high_lifeExp <- gapminder %>%
               mean_gdpPercap_expected = mean(gdp_futureExpectation))
 ~~~
 {: .r}
+
+
+
+~~~
+`summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
+~~~
+{: .output}
 
 ## Combining `dplyr` and `ggplot2`
 

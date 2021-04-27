@@ -1,7 +1,7 @@
 ---
 title: "Project Management With RStudio"
-teaching: 20
-exercises: 10
+teaching: 15
+exercises: 30
 questions:
 - "How can I manage my projects in R?"
 objectives:
@@ -197,7 +197,7 @@ Now we have a good directory structure we will now place/save the data file in t
 > > 
 > > 
 > > ~~~
-> > -rw-rw-r-- 1 ai ai 80K Nov  1 13:08 data/gapminder-FiveYearData.csv
+> > -rw-rw-r-- 1 ai ai 80K april 16 21:16 data/gapminder-FiveYearData.csv
 > > ~~~
 > > {: .output}
 > > The file size is 80K.
@@ -248,5 +248,3 @@ Now we have a good directory structure we will now place/save the data file in t
 ### Version Control
 
 It is important to use version control with projects.  Go [here](http://swcarpentry.github.io/git-novice/14-supplemental-rstudio/) for a good lesson which describes using Git with R Studio.
-
-

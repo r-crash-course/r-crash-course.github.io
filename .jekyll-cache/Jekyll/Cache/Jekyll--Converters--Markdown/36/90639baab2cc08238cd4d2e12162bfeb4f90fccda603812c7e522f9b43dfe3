@@ -1,0 +1,27 @@
+I"<p>Introduction to R for non-programmers using gapminder data.</p>
+
+<p>The goal of this lesson is to teach novice programmers to write modular code
+and introduce to you best practices for using R for data analysis. R is commonly used in many
+scientific disciplines for statistical analysis and its array of third-party
+packages. We find that many scientists
+use R and want to learn more. The emphasis of these materials is to give
+attendees a strong foundation in the fundamentals of R, and to teach best
+practices for scientific computing: breaking down analyses into modular units,
+task automation, and encapsulation.</p>
+
+<p>Note that this workshop will focus on teaching the fundamentals of the
+programming language R, and will not teach statistical analysis.</p>
+
+<p>A variety of third party packages are used throughout this workshop. These
+are not necessarily the best, nor are they comprehensive, but they are
+packages we find useful, and have been chosen primarily for their
+usability.</p>
+
+<blockquote class="prereq">
+  <h2 id="prerequisites">Prerequisites</h2>
+
+  <p>Understand that computers store data and instructions (programs, scripts etc.) in files.
+Files are organised in directories (folders).
+Know how to access files not in the working directory by specifying the path.</p>
+</blockquote>
+:ET

@@ -1,7 +1,7 @@
 ---
 title: Producing Reports With knitr
-teaching: 60
-exercises: 15
+teaching: 45
+exercises: 90
 questions:
 - "How can I integrate software and reports?"
 objectives:

@@ -1,7 +1,7 @@
 ---
 title: "Seeking Help"
-teaching: 10
-exercises: 10
+teaching: 20
+exercises: 30
 questions:
 - "How can I get help in R?"
 objectives:
@@ -115,31 +115,31 @@ sessionInfo()
 
 
 ~~~
-R version 3.4.2 (2017-09-28)
+R version 4.0.3 (2020-10-10)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 16.04.3 LTS
+Running under: Ubuntu 20.04.2 LTS
 
 Matrix products: default
-BLAS: /usr/lib/libblas/libblas.so.3.6.0
-LAPACK: /usr/lib/lapack/liblapack.so.3.6.0
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [3] LC_TIME=nb_NO.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=nb_NO.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=nb_NO.UTF-8       LC_NAME=C                 
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[11] LC_MEASUREMENT=nb_NO.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  base     
+[1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] checkpoint_0.4.2 stringr_1.2.0    knitr_1.17      
+[1] checkpoint_0.4.10 stringr_1.4.0     knitr_1.33       
 
 loaded via a namespace (and not attached):
-[1] compiler_3.4.2  magrittr_1.5    tools_3.4.2     stringi_1.1.5  
-[5] methods_3.4.2   evaluate_0.10.1
+[1] compiler_4.0.3 magrittr_2.0.1 tools_4.0.3    stringi_1.5.3  xfun_0.22     
+[6] evaluate_0.14 
 ~~~
 {: .output}
 
@@ -188,7 +188,7 @@ your issue.
 > > vector as long as the longest argument supplied to `paste`. In contrast,
 > > `collapse` specifies that after concatenation the elements are *collapsed*
 > > together using the given separator, the result being a single string.
-> > e.g. 
+> > e.g.
 > > 
 > > ~~~
 > > paste(c("a","b"), "c")

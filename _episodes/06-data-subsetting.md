@@ -1,7 +1,7 @@
 ---
 title: Subsetting Data
-teaching: 35
-exercises: 15
+teaching: 30
+exercises: 45
 questions:
 - "How can I work with subsets of data in R?"
 objectives:
@@ -496,7 +496,7 @@ x[names(x) == "a"]
 > vector are `TRUE`).
 {: .callout}
 
-> ## Challenge 3
+> ## Challenge 2
 >
 > Given the following code:
 >
@@ -518,7 +518,7 @@ x[names(x) == "a"]
 >
 > Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 >
-> > ## Solution to challenge 3
+> > ## Solution to challenge 2
 > >
 > > 
 > > ~~~
@@ -658,8 +658,8 @@ x[names(x)!=c("a","c")]
 
 
 ~~~
-Warning in names(x) != c("a", "c"): longer object length is not a multiple
-of shorter object length
+Warning in names(x) != c("a", "c"): longer object length is not a multiple of
+shorter object length
 ~~~
 {: .error}
 
@@ -688,8 +688,8 @@ names(x) != c("a", "c")
 
 
 ~~~
-Warning in names(x) != c("a", "c"): longer object length is not a multiple
-of shorter object length
+Warning in names(x) != c("a", "c"): longer object length is not a multiple of
+shorter object length
 ~~~
 {: .error}
 
@@ -731,7 +731,7 @@ x[! names(x) %in% c("a","c") ]
 ~~~
 {: .output}
 
-> ## Challenge 2
+> ## Challenge 3
 >
 > Selecting elements of a vector that match any of a list of components
 > is a very common data analysis task. For example, the gapminder data set
@@ -757,8 +757,8 @@ x[! names(x) %in% c("a","c") ]
 > a clunky way (using the logical operators `==` and `|`); and
 > an elegant way (using `%in%`). See whether you can come up with all three
 > and explain how they (don't) work.
-> 
-> > ## Solution to challenge 2
+>
+> > ## Solution to challenge 3
 > >
 > > - The **wrong** way to do this problem is `countries==seAsia`. This
 > > gives a warning (`"In countries == seAsia : longer object length is not a multiple of shorter object length"`) and the wrong answer (a vector of all
@@ -1150,7 +1150,7 @@ xlist[[-1]]
 
 
 ~~~
-Error in xlist[[-1]]: attempt to select more than one element in get1index <real>
+Error in xlist[[-1]]: invalid negative subscript in get1index <real>
 ~~~
 {: .error}
 
@@ -1478,7 +1478,7 @@ be changed with the third argument, `drop = FALSE`).
 > >
 > > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
 > >
-> > 2. 
+> > 2.
 > >
 > > 
 > > ~~~

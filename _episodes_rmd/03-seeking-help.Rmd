@@ -1,7 +1,7 @@
 ---
 title: "Seeking Help"
-teaching: 10
-exercises: 10
+teaching: 20
+exercises: 30
 questions:
 - "How can I get help in R?"
 objectives:
@@ -146,8 +146,8 @@ your issue.
 > > vector as long as the longest argument supplied to `paste`. In contrast,
 > > `collapse` specifies that after concatenation the elements are *collapsed*
 > > together using the given separator, the result being a single string.
-> > e.g. 
-> > ```{r} 
+> > e.g.
+> > ```{r}
 > > paste(c("a","b"), "c")
 > > paste(c("a","b"), "c", sep = ",")
 > > paste(c("a","b"), "c", collapse = "|")

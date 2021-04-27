@@ -1,0 +1,217 @@
+I"^+<h2 id="reading-help-files">Reading Help files</h2>
+
+<p>R, and every package, provide help files for functions. The general syntax to search for help on any
+function, “function_name”, from a specific function that is in a package loaded into your
+namespace (your interactive R session):</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>?function_name
+help(function_name)
+</code></pre></div></div>
+
+<p>This will load up a help page in RStudio (or as plain text in R by itself).</p>
+
+<p>Each help page is broken down into sections:</p>
+
+<ul>
+  <li>Description: An extended description of what the function does.</li>
+  <li>Usage: The arguments of the function and their default values.</li>
+  <li>Arguments: An explanation of the data each argument is expecting.</li>
+  <li>Details: Any important details to be aware of.</li>
+  <li>Value: The data the function returns.</li>
+  <li>See Also: Any related functions you might find useful.</li>
+  <li>Examples: Some examples for how to use the function.</li>
+</ul>
+
+<p>Different functions might have different sections, but these are the main ones you should be aware of.</p>
+
+<blockquote class="callout">
+  <h2 id="tip-reading-help-files">Tip: Reading help files</h2>
+
+  <p>One of the most daunting aspects of R is the large number of functions
+available. It would be prohibitive, if not impossible to remember the
+correct usage for every function you use. Luckily, the help files
+mean you don’t have to!</p>
+</blockquote>
+
+<h2 id="special-operators">Special Operators</h2>
+
+<p>To seek help on special operators, use quotes:</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>?"&lt;-"
+</code></pre></div></div>
+
+<h2 id="getting-help-on-packages">Getting help on packages</h2>
+
+<p>Many packages come with “vignettes”: tutorials and extended example documentation.
+Without any arguments, <code class="language-plaintext highlighter-rouge">vignette()</code> will list all vignettes for all installed packages;
+<code class="language-plaintext highlighter-rouge">vignette(package="package-name")</code> will list all available vignettes for
+<code class="language-plaintext highlighter-rouge">package-name</code>, and <code class="language-plaintext highlighter-rouge">vignette("vignette-name")</code> will open the specified vignette.</p>
+
+<p>If a package doesn’t have any vignettes, you can usually find help by typing
+<code class="language-plaintext highlighter-rouge">help("package-name")</code>.</p>
+
+<h2 id="when-you-kind-of-remember-the-function">When you kind of remember the function</h2>
+
+<p>If you’re not sure what package a function is in, or how it’s specifically spelled you can do a fuzzy search:</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>??function_name
+</code></pre></div></div>
+
+<h2 id="when-you-have-no-idea-where-to-begin">When you have no idea where to begin</h2>
+
+<p>If you don’t know what function or package you need to use
+<a href="http://cran.at.r-project.org/web/views">CRAN Task Views</a>
+is a specially maintained list of packages grouped into
+fields. This can be a good starting point.</p>
+
+<h2 id="when-your-code-doesnt-work-seeking-help-from-your-peers">When your code doesn’t work: seeking help from your peers</h2>
+
+<p>If you’re having trouble using a function, 9 times out of 10,
+the answers you are seeking have already been answered on
+<a href="http://stackoverflow.com/">Stack Overflow</a>. You can search using
+the <code class="language-plaintext highlighter-rouge">[r]</code> tag.</p>
+
+<p>If you can’t find the answer, there are a few useful functions to
+help you ask a question from your peers:</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>?dput
+</code></pre></div></div>
+
+<p>Will dump the data you’re working with into a format so that it can
+be copy and pasted by anyone else into their R session.</p>
+
+<div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sessionInfo()
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>R version 4.0.3 (2020-10-10)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 20.04.2 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=nb_NO.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=nb_NO.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=nb_NO.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=nb_NO.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] checkpoint_0.4.10 stringr_1.4.0     knitr_1.33       
+
+loaded via a namespace (and not attached):
+[1] compiler_4.0.3 magrittr_2.0.1 tools_4.0.3    stringi_1.5.3  xfun_0.22     
+[6] evaluate_0.14 
+</code></pre></div></div>
+
+<p>Will print out your current version of R, as well as any packages you
+have loaded. This can be useful for others to help reproduce and debug
+your issue.</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-1">Challenge 1</h2>
+
+  <p>Look at the help for the <code class="language-plaintext highlighter-rouge">c</code> function. What kind of vector do you
+expect you will create if you evaluate the following:</p>
+
+  <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c(1, 2, 3)
+c('d', 'e', 'f')
+c(1, 2, 'f')
+</code></pre></div>  </div>
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-1">Solution to Challenge 1</h2>
+
+    <p>The <code class="language-plaintext highlighter-rouge">c()</code> function creates a vector, in which all elements are the
+same type. In the first case, the elements are numeric, in the
+second, they are characters, and in the third they are characters:
+the numeric values are “coerced” to be characters.</p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-2">Challenge 2</h2>
+
+  <p>Look at the help for the <code class="language-plaintext highlighter-rouge">paste</code> function. You’ll need to use this later.
+What is the difference between the <code class="language-plaintext highlighter-rouge">sep</code> and <code class="language-plaintext highlighter-rouge">collapse</code> arguments?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-2">Solution to Challenge 2</h2>
+
+    <p>To look at the help for the <code class="language-plaintext highlighter-rouge">paste()</code> function, use:</p>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>help("paste")
+?paste
+</code></pre></div>    </div>
+    <p>The difference between <code class="language-plaintext highlighter-rouge">sep</code> and <code class="language-plaintext highlighter-rouge">collapse</code> is a little
+tricky. The <code class="language-plaintext highlighter-rouge">paste</code> function accepts any number of arguments, each of which
+can be a vector of any length. The <code class="language-plaintext highlighter-rouge">sep</code> argument specifies the string
+used between concatenated terms — by default, a space. The result is a
+vector as long as the longest argument supplied to <code class="language-plaintext highlighter-rouge">paste</code>. In contrast,
+<code class="language-plaintext highlighter-rouge">collapse</code> specifies that after concatenation the elements are <em>collapsed</em>
+together using the given separator, the result being a single string.
+e.g.</p>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>paste(c("a","b"), "c")
+</code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "a c" "b c"
+</code></pre></div>    </div>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>paste(c("a","b"), "c", sep = ",")
+</code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "a,c" "b,c"
+</code></pre></div>    </div>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>paste(c("a","b"), "c", collapse = "|")
+</code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "a c|b c"
+</code></pre></div>    </div>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>paste(c("a","b"), "c", sep = ",", collapse = "|")
+</code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] "a,c|b,c"
+</code></pre></div>    </div>
+    <p>(For more information,
+scroll to the bottom of the <code class="language-plaintext highlighter-rouge">?paste</code> help page and look at the
+examples, or try <code class="language-plaintext highlighter-rouge">example('paste')</code>.)</p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-3">Challenge 3</h2>
+  <p>Use help to find a function (and its associated parameters) that you could
+use to load data from a csv file in which columns are delimited with “\t”
+(tab) and the decimal point is a “.” (period). This check for decimal
+separator is important, especially if you are working with international
+colleagues, because different countries have different conventions for the
+decimal point (i.e. comma vs period).
+hint: use <code class="language-plaintext highlighter-rouge">??csv</code> to look up csv related functions.</p>
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-3">Solution to Challenge 3</h2>
+
+    <p>The standard R function for reading tab-delimited files with a period
+decimal separator is read.delim(). You can also do this with
+<code class="language-plaintext highlighter-rouge">read.table(file, sep="\t")</code> (the period is the <em>default</em> decimal
+separator for <code class="language-plaintext highlighter-rouge">read.table()</code>, although you may have to change
+the <code class="language-plaintext highlighter-rouge">comment.char</code> argument as well if your data file contains
+hash (#) characters</p>
+  </blockquote>
+</blockquote>
+
+<h2 id="other-ports-of-call">Other ports of call</h2>
+
+<ul>
+  <li><a href="http://www.statmethods.net/">Quick R</a></li>
+  <li><a href="http://www.rstudio.com/resources/cheatsheets/">RStudio cheat sheets</a></li>
+  <li><a href="http://www.cookbook-r.com/">Cookbook for R</a></li>
+</ul>
+:ET

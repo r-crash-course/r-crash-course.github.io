@@ -1,7 +1,7 @@
 ---
 title: Functions Explained
-teaching: 45
-exercises: 15
+teaching: 60
+exercises: 60
 questions:
 - "How can I write a new function in R?"
 objectives:
@@ -291,7 +291,7 @@ fahr_to_kelvin(temp = as.factor(32))
 
 
 ~~~
-Error: is.numeric(temp) is not TRUE
+Error in fahr_to_kelvin(temp = as.factor(32)): is.numeric(temp) is not TRUE
 ~~~
 {: .error}
 
@@ -321,7 +321,7 @@ Error: is.numeric(temp) is not TRUE
 > > ~~~
 > > {: .r}
 > {: .solution}
-{: .challenge}```
+{: .challenge}
 
 ## More on combining functions
 
@@ -340,7 +340,7 @@ calcGDP <- function(dat) {
 {: .r}
 
 We define `calcGDP()` by assigning it to the output of `function`. The list of
-argument names are contained within parentheses. Next, the body of the function 
+argument names are contained within parentheses. Next, the body of the function
 -- the statements executed when you call the function -- is contained within
 curly braces (`{}`).
 
@@ -402,8 +402,8 @@ source("functions/functions-lesson.R")
 
 Ok, so there's a lot going on in this function now. In plain English, the
 function now subsets the provided data by year if the year argument isn't empty,
-then subsets the result by country if the country argument isn't empty. Then it 
-calculates the GDP for whatever subset emerges from the previous two steps. The 
+then subsets the result by country if the country argument isn't empty. Then it
+calculates the GDP for whatever subset emerges from the previous two steps. The
 function then adds the GDP as a new column to the subsetted data and returns
 this as the final result. You can see that the output is much more informative
 than a vector of numbers.
@@ -497,7 +497,7 @@ take on those values unless the user specifies otherwise.
 {: .r}
 
 Here, we check whether each additional argument is set to `null`, and whenever
-they're not `null` overwrite the dataset stored in `dat` with a subset given by 
+they're not `null` overwrite the dataset stored in `dat` with a subset given by
 the non-`null` argument.
 
 I did this so that our function is more flexible for later. We can ask it to
@@ -544,15 +544,15 @@ arguments.
 
 Finally, we calculated the GDP on our new subset, and created a new data frame
 with that column added. This means when we call the function later we can see
-the context for the returned GDP values, which is much better than in our first 
+the context for the returned GDP values, which is much better than in our first
 attempt where we got a vector of numbers.
 
-> ## Challenge 3
+> ## Challenge 4
 >
 > Test out your GDP function by calculating the GDP for New Zealand in 1987. How
 > does this differ from New Zealand's GDP in 1952?
 >
-> > ## Solution to challenge 3
+> > ## Solution to challenge 4
 > >
 > > 
 > > ~~~
@@ -566,7 +566,7 @@ attempt where we got a vector of numbers.
 {: .challenge}
 
 
-> ## Challenge 4
+> ## Challenge 5
 >
 > The `paste()` function can be used to combine text together, e.g:
 >
@@ -597,7 +597,7 @@ attempt where we got a vector of numbers.
 > the separator between text. The default is a space: " ". The default for
 > `paste0()` is no space "".
 >
-> > ## Solution to challenge 4
+> > ## Solution to challenge 5
 > >
 > >  Write a function called `fence()` that takes two vectors as arguments,
 > > called `text` and `wrapper`, and prints out the text wrapped with the
@@ -670,4 +670,3 @@ attempt where we got a vector of numbers.
 
 [roxygen2]: http://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html
 [testthat]: http://r-pkgs.had.co.nz/tests.html
-

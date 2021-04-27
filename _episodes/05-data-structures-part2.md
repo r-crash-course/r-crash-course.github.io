@@ -1,7 +1,7 @@
 ---
 title: "Exploring Data Frames"
-teaching: 20
-exercises: 10
+teaching: 30
+exercises: 30
 questions:
 - "How can I manipulate a data frame?"
 objectives:
@@ -119,14 +119,6 @@ cats <- rbind(cats, newRow)
 ~~~
 {: .r}
 
-
-
-~~~
-Warning in `[<-.factor`(`*tmp*`, ri, value = "tortoiseshell"): invalid
-factor level, NA generated
-~~~
-{: .error}
-
 ## Factors
 
 Another thing to look out for has emerged - when R creates a factor, it only
@@ -149,7 +141,7 @@ levels(cats$coat)
 
 
 ~~~
-[1] "black"  "calico" "tabby" 
+NULL
 ~~~
 {: .output}
 
@@ -160,6 +152,14 @@ levels(cats$coat) <- c(levels(cats$coat), 'tortoiseshell')
 cats <- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
 ~~~
 {: .r}
+
+
+
+~~~
+Warning in `[<-.factor`(`*tmp*`, ri, value = structure(c("calico", "black", :
+invalid factor level, NA generated
+~~~
+{: .error}
 
 Alternatively, we can change a factor column to a character vector; we lose the
 handy categories of the factor, but can subsequently add any word we want to the
@@ -175,7 +175,7 @@ str(cats)
 
 ~~~
 'data.frame':	5 obs. of  4 variables:
- $ coat        : Factor w/ 4 levels "black","calico",..: 2 1 3 NA 4
+ $ coat        : Factor w/ 1 level "tortoiseshell": NA NA NA 1 1
  $ weight      : num  2.1 5 3.2 3.3 3.3
  $ likes_string: int  1 0 1 1 1
  $ age         : num  4 5 8 9 9
@@ -194,7 +194,7 @@ str(cats)
 
 ~~~
 'data.frame':	5 obs. of  4 variables:
- $ coat        : chr  "calico" "black" "tabby" NA ...
+ $ coat        : chr  NA NA NA "tortoiseshell" ...
  $ weight      : num  2.1 5 3.2 3.3 3.3
  $ likes_string: int  1 0 1 1 1
  $ age         : num  4 5 8 9 9
@@ -202,7 +202,7 @@ str(cats)
 {: .output}
 
 > ## Challenge 1
-> Let's imagine that, like dogs, 1 human year is equivalent to 7 cat years. (The Purina company uses a [more sophisticated alogrithm](https://www.proplan.com/cats/cat-age-calculator)). 
+> Let's imagine that, like dogs, 1 human year is equivalent to 7 cat years. (The Purina company uses a [more sophisticated alogrithm](https://www.proplan.com/cats/cat-age-calculator)).
 > 1. Create a vector called `human.age` by multiplying `cats$age` by 7.
 > 2. Convert `human.age` to a factor.
 > 3. Convert `human.age` back to a numeric vector using the `as.numeric()` function. Now divide it by 7 to get back the original ages. Explain what happened.
@@ -230,10 +230,10 @@ cats
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
-4          <NA>    3.3            1   9
+1          <NA>    2.1            1   4
+2          <NA>    5.0            0   5
+3          <NA>    3.2            1   8
+4 tortoiseshell    3.3            1   9
 5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
@@ -250,9 +250,9 @@ cats[-4,]
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
+1          <NA>    2.1            1   4
+2          <NA>    5.0            0   5
+3          <NA>    3.2            1   8
 5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
@@ -274,9 +274,7 @@ na.omit(cats)
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
+4 tortoiseshell    3.3            1   9
 5 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
@@ -306,13 +304,9 @@ cats
 
 ~~~
             coat weight likes_string age
-1         calico    2.1            1   4
-2          black    5.0            0   5
-3          tabby    3.2            1   8
+4  tortoiseshell    3.3            1   9
 5  tortoiseshell    3.3            1   9
-11        calico    2.1            1   4
-21         black    5.0            0   5
-31         tabby    3.2            1   8
+41 tortoiseshell    3.3            1   9
 51 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
@@ -330,14 +324,10 @@ cats
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
+1 tortoiseshell    3.3            1   9
+2 tortoiseshell    3.3            1   9
+3 tortoiseshell    3.3            1   9
 4 tortoiseshell    3.3            1   9
-5        calico    2.1            1   4
-6         black    5.0            0   5
-7         tabby    3.2            1   8
-8 tortoiseshell    3.3            1   9
 ~~~
 {: .output}
 
@@ -424,10 +414,10 @@ str(gapminder)
 
 ~~~
 'data.frame':	1704 obs. of  6 variables:
- $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ country  : chr  "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
  $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
- $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ continent: chr  "Asia" "Asia" "Asia" "Asia" ...
  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
  $ gdpPercap: num  779 821 853 836 740 ...
 ~~~
@@ -458,7 +448,7 @@ typeof(gapminder$country)
 
 
 ~~~
-[1] "integer"
+[1] "character"
 ~~~
 {: .output}
 
@@ -472,7 +462,7 @@ str(gapminder$country)
 
 
 ~~~
- Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+ chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
 ~~~
 {: .output}
 
