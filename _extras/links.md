@@ -26,6 +26,14 @@ This course was prepared based on the resources below as well as [Software Carpe
 * [ggplot2](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
 * [R Markdown](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
 
+## Excercises
+
+* [Basics](https://www.w3resource.com/r-programming-exercises/)
+* [Math Challenges](https://projecteuler.net/about)
+* [Scientific Challenges](https://projectlovelace.net/)
+* [Semi-free](https://coderbyte.com/)
+* [Hacker Rank](https://www.hackerrank.com/)
+
 ## Help us improve the course
 
 * [Evaluation Form](https://docs.google.com/forms/d/e/1FAIpQLScg6pWrkPahBq0oJjj-Fhcaxtsn7JM2Y-c2gf-jSJU0r1JUGA/viewform?usp=sf_link)
