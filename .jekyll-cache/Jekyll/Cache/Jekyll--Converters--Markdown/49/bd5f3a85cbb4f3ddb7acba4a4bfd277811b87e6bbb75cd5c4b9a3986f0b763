@@ -1,4 +1,4 @@
-I"\<h2 id="read-more">Read more</h2>
+I"ð<h2 id="read-more">Read more</h2>
 
 <p>This course was prepared based on the resources below as well as <a href="http://swcarpentry.github.io/r-novice-gapminder/">Software Carpentry</a>. If you wish to spend more time, and get more in depth into R, here is a list of recomendable resources:</p>
 
@@ -22,6 +22,16 @@
   <li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf">Data Transformation</a></li>
   <li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf">ggplot2</a></li>
   <li><a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf">R Markdown</a></li>
+</ul>
+
+<h2 id="excercises">Excercises</h2>
+
+<ul>
+  <li><a href="https://www.w3resource.com/r-programming-exercises/">Basics</a></li>
+  <li><a href="https://projecteuler.net/about">Math Challenges</a></li>
+  <li><a href="https://projectlovelace.net/">Scientific Challenges</a></li>
+  <li><a href="https://coderbyte.com/">Semi-free</a></li>
+  <li><a href="https://www.hackerrank.com/">Hacker Rank</a></li>
 </ul>
 
 <h2 id="help-us-improve-the-course">Help us improve the course</h2>
