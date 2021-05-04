@@ -699,7 +699,7 @@ print(m)
 
   <p>C. <code class="language-plaintext highlighter-rouge">m[4:5,2]</code></p>
 
-  <p>D. <code class="language-plaintext highlighter-rouge">m[2,c(4,5)]</code></p>
+  <p>D. <code class="language-plaintext highlighter-rouge">m[2,c(5,6)]</code></p>
 
   <blockquote class="solution">
     <h2 id="solution-to-challenge-4">Solution to challenge 4</h2>

@@ -918,7 +918,7 @@ writePairwiseAlignments(aln[1]) # Lets see first alignment.
 ~~~
 ########################################
 # Program: Biostrings (version 2.58.0), a Bioconductor package
-# Rundate: Tue Apr 27 20:13:57 2021
+# Rundate: Tue May  4 11:08:05 2021
 ########################################
 #=======================================
 #
