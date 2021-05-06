@@ -35,8 +35,9 @@ To install Bioconductor visit [this](http://bioconductor.org/install/) page or d
 
 
 ~~~
-source("https://bioconductor.org/biocLite.R")
-biocLite()
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install()
 ~~~
 {: .r}
 
@@ -44,7 +45,7 @@ Lets install packages that will be useful in this lesson.
 
 
 ~~~
-biocLite(c("IRanges", "GenomicRanges", "ShortRead", "Biostrings", "ggbio"))
+BiocManager::install(c("IRanges", "GenomicRanges", "ShortRead", "Biostrings", "ggbio", "biovizBase"))
 ~~~
 {: .r}
 
@@ -918,7 +919,7 @@ writePairwiseAlignments(aln[1]) # Lets see first alignment.
 ~~~
 ########################################
 # Program: Biostrings (version 2.58.0), a Bioconductor package
-# Rundate: Tue May  4 11:08:05 2021
+# Rundate: Thu May  6 12:19:07 2021
 ########################################
 #=======================================
 #

@@ -37,14 +37,15 @@ together and creation of power-full pipelines becomes possible.
 To install Bioconductor visit [this](http://bioconductor.org/install/) page or do:
 
 ```{r, eval=FALSE}
-source("https://bioconductor.org/biocLite.R")
-biocLite()
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install()
 ```
 
 Lets install packages that will be useful in this lesson.
 
 ```{r, eval=FALSE}
-biocLite(c("IRanges", "GenomicRanges", "ShortRead", "Biostrings", "ggbio"))
+BiocManager::install(c("IRanges", "GenomicRanges", "ShortRead", "Biostrings", "ggbio", "biovizBase"))
 ```
 
 Take a look how Bioconductor core packages are structured below. We will go through some of these
