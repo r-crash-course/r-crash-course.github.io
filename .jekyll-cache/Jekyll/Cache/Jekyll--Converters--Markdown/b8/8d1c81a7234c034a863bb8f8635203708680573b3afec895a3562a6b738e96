@@ -657,7 +657,7 @@ hist(score(aln)) # Why scores are so low?
 
 <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>########################################
 # Program: Biostrings (version 2.58.0), a Bioconductor package
-# Rundate: Thu May  6 12:19:07 2021
+# Rundate: Thu May  6 21:51:34 2021
 ########################################
 #=======================================
 #

@@ -1,4 +1,4 @@
-I"n<script>
+I"²<script>
   window.onload = function() {
     var lesson_episodes = [
     
@@ -34,7 +34,9 @@
     
     "/16-bioconductor/",
     
-    "/17-wrap-up/"
+    "/17-wrap-up/",
+    
+    "/18-excercise/"
     
     ];
     var xmlHttp = [];  /* Required since we are going to query every episode. */
@@ -90,5 +92,7 @@
 <article id="/16-bioconductor/"></article>
 
 <article id="/17-wrap-up/"></article>
+
+<article id="/18-excercise/"></article>
 
 :ET

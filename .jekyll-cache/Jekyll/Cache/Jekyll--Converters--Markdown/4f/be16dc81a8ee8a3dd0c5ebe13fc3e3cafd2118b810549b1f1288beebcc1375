@@ -1,0 +1,223 @@
+I"�"<h2 id="the-excercise">The excercise</h2>
+
+<p>Some of your patients suffer from “fakeria disisea”, treated data contains genes of patients that have been drinking specially designed drug. Some of these patients claim they are cured and they can feel changes in their gene
+regualtion ^^
+Can you guess which patients are the <em>cured</em> ones?</p>
+
+<blockquote class="challenge">
+  <h2 id="challenge-1">Challenge 1</h2>
+
+  <p>Download and load in R those files: <a href="https://raw.githubusercontent.com/r-crash-course/r-crash-course.github.io/master/_episodes_rmd/data/genes_cases.csv">data</a> and <a href="https://raw.githubusercontent.com/r-crash-course/r-crash-course.github.io/master/_episodes_rmd/data/cases_metadata.csv">metadata</a>.
+Notice that <code class="language-plaintext highlighter-rouge">data</code> has named rows!</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-1">Solution to Challenge 1</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>meta &lt;- read.csv("data/cases_metadata.csv")
+dt &lt;- read.csv("data/genes_cases.csv")
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-2">Challenge 2</h2>
+
+  <p>Transform from wide to long the genes_cases data.
+Rename gene column to <code class="language-plaintext highlighter-rouge">genes</code>.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-2">Solution to Challenge 2</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dt &lt;- dt %&gt;%
+  gather(key = "ID", value = "value", -X)
+colnames(dt)[1] &lt;- "gene"
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-3">Challenge 3</h2>
+
+  <p>Merge two tables using id columns.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-3">Solution to Challenge 3</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dt$ID &lt;- sapply(dt$ID, function(x) {
+  x &lt;- strsplit(x, "_")[[1]]
+  paste0(x, collapse = "")
+})
+dt &lt;- dt %&gt;% full_join(meta, by = c("ID" = "id"))
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-4">Challenge 4</h2>
+
+  <p>Remove from memory meta table.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-4">Solution to Challenge 4</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm(meta)
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-5">Challenge 5</h2>
+
+  <p>Check whether there are any NA in our data.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-5">Solution to Challenge 5</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>any(is.na(dt))
+</code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] TRUE
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-6">Challenge 6</h2>
+
+  <p>We are going to remove the NA rows. Filter them out. Remove also empty strings!</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-6">Solution to Challenge 6</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dt &lt;- na.omit(dt)
+dt &lt;- dt[dt$gender != "", ]
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-7">Challenge 7</h2>
+
+  <p>Lets add below40 column to our data and fill it with T/F for those who are below 40 years old.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-7">Solution to Challenge 7</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dt$below40 &lt;- dt$age &lt; 40
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-8">Challenge 8</h2>
+
+  <p>Can we find in this haystack those genes that have vastly different means between cases and control? Calculate means and standard deviation per gene for control and treated groups, but also split by gender and below40.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-8">Solution to Challenge 8</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>avg &lt;- dt %&gt;%
+  group_by(gene, case, gender, below40) %&gt;%
+  summarize(avg = mean(value),
+            sd = sd(value),
+            .groups = "drop")
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-9">Challenge 9</h2>
+
+  <p>Now, lets focus on that average and reshape the table, to wider format with columns: gene, control, treated, gender and below40 and compute differences between control and treated lets plot those differences by making histogram and density plots. How to include in the plot information on gender and below40? Save the plots.
+Normally, we would have to do t-test here, but we will not explore any statistics on this course.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-9">Solution to Challenge 9</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>avg &lt;- avg %&gt;%
+  dplyr::select(-sd) %&gt;%
+  spread(case, avg) %&gt;%
+  mutate(diff = control - treated)
+
+ggplot(avg, aes(x = diff, fill = gender)) +
+  geom_histogram(alpha = 0.3) +
+  facet_grid(. ~ below40)
+</code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre></div>    </div>
+
+    <p><img src="../fig/rmd-18-unnamed-chunk-10-1.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;" /></p>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ggplot(avg, aes(x = diff, fill = gender)) +
+  geom_density(alpha = 0.3) +
+  facet_grid(. ~ below40)
+</code></pre></div>    </div>
+
+    <p><img src="../fig/rmd-18-unnamed-chunk-10-2.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;" /></p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-10">Challenge 10</h2>
+
+  <p>Lets focus on that group of women under 40. Figure out which genes are those extreme outliers, take top 10 most skewed genes (upregulated and downregulated).</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-10">Solution to Challenge 10</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upregulated &lt;- avg %&gt;%
+  filter(gender == "F", below40) %&gt;%
+  slice_min(diff, n = 10)
+
+downregulated &lt;- avg %&gt;%
+  filter(gender == "F", below40) %&gt;%
+  slice_max(diff, n = 10)
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-11">Challenge 11</h2>
+
+  <p>Now lets figure out which patient IDs are female and &lt; 40, these patients are <code class="language-plaintext highlighter-rouge">cured</code> group.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-11">Solution to Challenge 11</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dt %&gt;%
+  filter(gender == "F", below40) %&gt;%
+  summarize(ID = unique(ID))
+</code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     ID
+1   ID7
+2  ID14
+3  ID20
+4  ID26
+5  ID33
+6  ID39
+7  ID51
+8  ID53
+9  ID54
+10 ID55
+11 ID71
+12 ID75
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="challenge-12">Challenge 12</h2>
+
+  <p>Good job! You are finished! However you can think of some other excercise that could be done using this data. Share your excercise with the teacher.</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-to-challenge-12">Solution to Challenge 12</h2>
+
+    <div class="language-plaintext r highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Whatever you have came up with!
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+<p>, good job.</p>
+:ET
