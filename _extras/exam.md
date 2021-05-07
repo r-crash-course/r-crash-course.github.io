@@ -19,4 +19,4 @@ Keep the following in mind:
 
 Send the **gzipped R Project** to the examiner email, make sure it **works as is**, after unpacking. In case the data you use is too big to send over email (limit of 25mb) send only the .Rmd file and .html file.
 
-You have got **2 weeks** after the end of the course to deliver the solution.
+You have got **3 weeks** after the end of the course to deliver the solution.
