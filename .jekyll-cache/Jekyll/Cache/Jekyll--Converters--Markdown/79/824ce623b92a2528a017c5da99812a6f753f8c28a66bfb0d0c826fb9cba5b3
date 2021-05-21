@@ -1,0 +1,42 @@
+I"¤<h2 id="read-more">Read more</h2>
+
+<p>This course was prepared based on the resources below as well as <a href="http://swcarpentry.github.io/r-novice-gapminder/">Software Carpentry</a>. If you wish to spend more time, and get more in depth into R, here is a list of recomendable resources:</p>
+
+<ul>
+  <li><a href="https://d1b10bmlvqabco.cloudfront.net/attach/ighbo26t3ua52t/igp9099yy4v10/igz7vp4w5su9/OReilly_HandsOn_Programming_with_R_2014.pdf">Beginner level course on R from OReilly</a></li>
+  <li><a href="http://r4ds.had.co.nz/introduction.html">Basics of R for data science</a></li>
+  <li><a href="https://adv-r.had.co.nz/">Advanced R with Hadley</a></li>
+  <li><a href="http://r-pkgs.had.co.nz/">Making R packages</a></li>
+  <li><a href="http://moderngraphics11.pbworks.com/f/ggplot2-Book09hWickham.pdf">Mastering ggplot2</a></li>
+</ul>
+
+<h2 id="cheat-sheats">Cheat Sheats</h2>
+
+<ul>
+  <li><a href="https://www.rstudio.com/resources/cheatsheets/">Official source for cheat sheets</a></li>
+  <li><a href="https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf">R Studio IDE</a></li>
+  <li>
+    <p><a href="http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf">Base R</a></p>
+  </li>
+  <li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf">Data Import</a></li>
+  <li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf">Data Transformation</a></li>
+  <li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf">ggplot2</a></li>
+  <li><a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf">R Markdown</a></li>
+</ul>
+
+<h2 id="excercises">Excercises</h2>
+
+<ul>
+  <li><a href="https://www.w3resource.com/r-programming-exercises/">Basics</a></li>
+  <li><a href="https://projecteuler.net/about">Math Challenges</a></li>
+  <li><a href="https://projectlovelace.net/">Scientific Challenges</a></li>
+  <li><a href="https://coderbyte.com/">Semi-free</a></li>
+  <li><a href="https://www.hackerrank.com/">Hacker Rank</a></li>
+</ul>
+
+<h2 id="help-us-improve-the-course">Help us improve the course</h2>
+
+<ul>
+  <li><a href="https://forms.gle/b9SrK6GTTfvmyqqT9">Evaluation Form</a></li>
+</ul>
+:ET

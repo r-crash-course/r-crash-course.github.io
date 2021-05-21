@@ -36,4 +36,4 @@ This course was prepared based on the resources below as well as [Software Carpe
 
 ## Help us improve the course
 
-* [Evaluation Form](https://docs.google.com/forms/d/e/1FAIpQLScg6pWrkPahBq0oJjj-Fhcaxtsn7JM2Y-c2gf-jSJU0r1JUGA/viewform?usp=sf_link)
+* [Evaluation Form](https://forms.gle/b9SrK6GTTfvmyqqT9)
